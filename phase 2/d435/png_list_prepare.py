@@ -2,9 +2,6 @@ import os
 import pyrealsense2 as rs
 import numpy as np
 import cv2
-import sys
-from matplotlib import pyplot as plt
-from matplotlib.widgets2 import Ruler
 
 def color_to_png(input_file):
     pipeline = rs.pipeline()
@@ -12,24 +9,25 @@ def color_to_png(input_file):
     config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgba8, 30)
     config.enable_device_from_file('./bag/'+input_file,False)
     profile = pipeline.start(config)
+    device = profile.get_device()
+    playback = device.as_playback()
+    playback.set_real_time(False)
     try:
         while True:
             frames = pipeline.wait_for_frames()
-            frames.keep()
-            if frames:
-                color_frame = frames.get_color_frame()
-                var = rs.frame.get_frame_number(color_frame)
-                color_image = np.asanyarray(color_frame.get_data())
-                color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
-                cv2.namedWindow("Color Stream", cv2.WINDOW_AUTOSIZE)
-                cv2.imshow("Color Stream", color_cvt)
+            color_frame = frames.get_color_frame()
+            var = rs.frame.get_frame_number(color_frame)
+            color_image = np.asanyarray(color_frame.get_data())
+            color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
+            cv2.namedWindow("Color Stream", cv2.WINDOW_AUTOSIZE)
+            cv2.imshow("Color Stream", color_cvt)
 
-                cv2.imwrite('./png/'+input_file[:-4] + '_c_' + str(var) + '.png', color_cvt,[cv2.IMWRITE_PNG_COMPRESSION,2])
-                key = cv2.waitKey(1)
-                # if pressed escape exit program
-                if key == 27:
-                    cv2.destroyAllWindows()
-                    break
+            cv2.imwrite('./png/{}_c_{}.png'.format(input_file[:-4],str(var)), color_cvt,[cv2.IMWRITE_PNG_COMPRESSION,9])
+            key = cv2.waitKey(100)
+            # if pressed escape exit program
+            if key == 27:
+                cv2.destroyAllWindows()
+                break
 
     except RuntimeError:
         print 'frame covert finished for '+input_file
@@ -151,4 +149,4 @@ for filename in os.listdir(dir_name):
     color_match_list(filename)
     depth_match_list(filename)
     match_frame_list(filename)
-print 'all done, Perfect!'
+print 'all done, perfect!'
