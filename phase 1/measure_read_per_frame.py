@@ -19,11 +19,18 @@ print file_name
 pipeline = rs.pipeline()
 config = rs.config()
 config.enable_device_from_file(file_name)
-
+config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
+config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgba8, 30)
 # Start streaming from file
 profile = pipeline.start(config)
-profile.get_device().as_playback().set_real_time(True)
-print 'profile got'
+
+# set up sensor
+dev = profile.get_device()
+dev.as_playback().set_real_time(False)
+depth_sensor = dev.first_depth_sensor()
+cam_range = depth_sensor.get_option_range(rs.option.visual_preset)
+preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
+print 'sensor set'
 #align to color map
 align_to = rs.stream.color
 align = rs.align(align_to)
@@ -32,23 +39,16 @@ print 'aligned'
 for x in range(5):
   pipeline.wait_for_frames()
 
-print 'waited'
-
 # Streaming loop
 try:
     while True:
-        #set up sensor
-        dev = profile.get_device()
-        depth_sensor = dev.first_depth_sensor()
-        range = depth_sensor.get_option_range(rs.option.visual_preset)
-        preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
-        print 'sensor set'
-
         # Get frameset of depth
         frames = pipeline.wait_for_frames()
         aligned_frames = align.process(frames)
         depth_frame = aligned_frames.get_depth_frame()
         color_frame = frames.get_color_frame()
+        var = rs.frame.get_frame_number(color_frame)
+        print var
         #colorize depth frame
         depth_color = rs.colorizer().colorize(depth_frame)
         print 'frame colorized'
@@ -67,9 +67,7 @@ try:
         color_image = np.asanyarray(color_frame.get_data())
         print 'got image'
 
-        #set image property
-        image = color_image
-        print 'image property set'
+
         def calculate_3D (xi, yi, x0, y0):
             udist = depth_frame.get_distance(xi, yi)
             vdist = depth_frame.get_distance(x0, y0)
@@ -99,20 +97,23 @@ try:
                 return x0,y0
 
         print 'show window'
-        cv2.namedWindow('RealSense', cv2.WINDOW_AUTOSIZE)
-        cv2.setMouseCallback('RealSense',measure)
-        cv2.imshow('RealSense', image)
+        cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
+        cv2.namedWindow('Depth', cv2.WINDOW_AUTOSIZE)
+        cv2.setMouseCallback('Color', measure)
+        cv2.setMouseCallback('Depth', measure)
+        cv2.imshow('Color',color_image)
+        cv2.imshow('Depth',depth_image)
+
         key = cv2.waitKey(0)
         # Press esc or 'q' to close the image window
         if key & 0xFF == ord('q') or key == 27:
             cv2.destroyAllWindows()
             print 'break'
             break
+        elif key == 32:
+            cv2.destroyAllWindows()
+            continue
 finally:
 
     pipeline.stop()
     print 'stopped'
-
-
-
-
