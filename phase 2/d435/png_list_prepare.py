@@ -6,12 +6,9 @@ import cv2
 def color_to_png(input_file):
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgba8, 30)
+    config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
     config.enable_device_from_file('./bag/'+input_file,False)
     profile = pipeline.start(config)
-    device = profile.get_device()
-    playback = device.as_playback()
-    playback.set_real_time(False)
     try:
         while True:
             frames = pipeline.wait_for_frames()
@@ -21,7 +18,6 @@ def color_to_png(input_file):
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
             cv2.namedWindow("Color Stream", cv2.WINDOW_AUTOSIZE)
             cv2.imshow("Color Stream", color_cvt)
-
             cv2.imwrite('./png/{}_c_{}.png'.format(input_file[:-4],str(var)), color_cvt,[cv2.IMWRITE_PNG_COMPRESSION,9])
             key = cv2.waitKey(100)
             # if pressed escape exit program
@@ -39,12 +35,8 @@ def color_match_list(input_file):
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_device_from_file('./bag/'+input_file, False)
-    config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
-    config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgba8, 30)
+    config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
     profile = pipeline.start(config)
-    device = profile.get_device()
-    playback = device.as_playback()
-    playback.set_real_time(False)
     align_to = rs.stream.color
     align = rs.align(align_to)
     fold = open('./list/'+input_file[:-4] +'_colorlist.txt', 'w')
@@ -53,10 +45,9 @@ def color_match_list(input_file):
             frames = pipeline.wait_for_frames()
             aligned_frames = align.process(frames)
             color_frame = aligned_frames.get_color_frame()
-            vard = rs.frame.get_frame_number(color_frame)
-            time_depth = rs.frame.get_timestamp(color_frame)
-            fold.write(str(vard) + ',')
-            fold.write(str(time_depth) + '\n')
+            num_c = rs.frame.get_frame_number(color_frame)
+            time_c = rs.frame.get_timestamp(color_frame)
+            fold.write('{},{}\n'.format(str(num_c),str(time_c)))
 
     except RuntimeError:
         print 'color frame list ended'
@@ -68,12 +59,8 @@ def depth_match_list(input_file):
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_device_from_file('./bag/'+input_file, False)
-    config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
-    config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgba8, 30)
+    config.enable_all_streams()
     profile = pipeline.start(config)
-    device = profile.get_device()
-    playback = device.as_playback()
-    playback.set_real_time(False)
     align_to = rs.stream.color
     align = rs.align(align_to)
     fold = open('./list/'+input_file[:-4] +'_depthlist.txt', 'w')
@@ -82,10 +69,9 @@ def depth_match_list(input_file):
             frames = pipeline.wait_for_frames()
             aligned_frames = align.process(frames)
             depth_frame = aligned_frames.get_depth_frame()
-            vard = rs.frame.get_frame_number(depth_frame)
-            time_depth = rs.frame.get_timestamp(depth_frame)
-            fold.write(str(vard) + ',')
-            fold.write(str(time_depth) + '\n')
+            num_d = rs.frame.get_frame_number(depth_frame)
+            time_d = rs.frame.get_timestamp(depth_frame)
+            fold.write('{},{}\n'.format(str(num_d), str(time_d)))
 
     except RuntimeError:
         print 'depth frame list ended'
@@ -108,21 +94,24 @@ def match_frame_list(input_file):
 
     csvfile.close()
     depcsv.close()
-
     f_list = []
     for t_c in color_frame_list:
         for t_d in depth_frame_list:
             gap = float(t_c[1]) - float(t_d[1])
             gap = abs(gap)
-            if gap < 20:
+            if gap < 25:
                 f_list.append(str(t_c[0]) + ',' + str(t_d[0]) + '\n')
     unique_list = []
-    with open('./list/'+input_file[:-4]+'_matched.txt', 'w') as matched:
-        for elem in f_list:
-            if elem not in unique_list:
-                unique_list.append(elem)
-                matched.write(elem)
+    for elem in f_list:
+        if elem not in unique_list:
+            unique_list.append(elem)
 
+    i = 1
+    with open('./list/' + input_file[:-4] + '_matched.txt', 'w') as matched:
+        for x in unique_list:
+            x = '{},{}'.format(i, x)
+            matched.write(x)
+            i += 1
     matched.close()
     print 'finished match list '+input_file
 
@@ -145,7 +134,7 @@ if not os.path.exists('list'):
 
 for filename in os.listdir(dir_name):
     print filename
-    color_to_png(filename)
+    #color_to_png(filename)
     color_match_list(filename)
     depth_match_list(filename)
     match_frame_list(filename)
