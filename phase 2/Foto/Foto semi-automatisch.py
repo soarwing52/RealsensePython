@@ -11,9 +11,7 @@ def main():
 
 
 def record():
-    #global time_name
-    #time_name = time.strftime('%d_%m_%H_%M')
-    file_name = raw_input('Wegenummer: \n')+ '.bag'#str(time_name) + '.bag'
+    file_name = raw_input('Wegenummer: \n')+ '.bag'
     print file_name
     pipeline = rs.pipeline()
     config = rs.config()

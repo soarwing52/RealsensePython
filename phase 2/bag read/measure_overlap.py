@@ -14,8 +14,7 @@ file_name = './bag/'+num+'.bag'
 pipeline = rs.pipeline()
 config = rs.config()
 config.enable_device_from_file(file_name)
-config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
-config.enable_stream(rs.stream.color, 1280, 720, rs.format.rgba8, 30)
+config.enable_all_streams()
 profile = pipeline.start(config)
 device = profile.get_device()
 playback = device.as_playback()
@@ -72,11 +71,19 @@ try:
                                       markerprops=markerprops,
                                       lineprops=lineprops,
                                       )
+                        def quit_figure(event):
+                            if event.key == 'q':
+                                plt.close(event.canvas.figure)
+                                global i
+                                i = 800
+                                return i
+                        cid = plt.gcf().canvas.mpl_connect('key_press_event', quit_figure)
+
 
                         #print 'show image'
                         plt.show()
                         # if pressed escape exit program
-                        if key == 27:
+                        if i == 800:
                             cv2.destroyAllWindows()
                             break
                         else:
