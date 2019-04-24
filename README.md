@@ -14,25 +14,43 @@ h for last/j for next /u for search frame
 What things you need to install the software and how to install them
 
 ```
-Give examples
+pip install --upgrade pip
+pip install --user pyrealsense2 
+pip install --user opencv-python 
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
+After installed, copy widgets2 into Lib/matplotlib
+and copy def_measure to C:\Users\yourusername\AppData\Roaming\Python\Python27\site-packages
 
 ```
-Give the example
-```
-
-And repeat
 
 ```
-until finished
-```
 
+in Arcgis use hyperlink and show script
+put in 
+
+```
+import def_measure
+def OpenLink ( [Str_ID] , [bagpath] , [Color_text]):
+  bag_path = [bagpath] 
+  weg_id = [Str_ID]
+  color_id = [Color_text] 
+  def_measure.frame_match(bag_path,weg_id,color_id)
+  return
+```
+or
+```
+import def_measure
+def OpenLink ( [path2]  , [Path]  ):
+  bag_path = [Path] 
+  weg_id = [path2] 
+  def_measure.video(bag_path,weg_id)
+  return
+```
 End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
