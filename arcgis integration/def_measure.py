@@ -23,6 +23,8 @@ def video(bag,weg_id):
         while True:
             frames = pipeline.wait_for_frames()
             color_frame = frames.get_color_frame()
+            if not color_frame:
+                continue
             c_frame_num = rs.frame.get_frame_number(color_frame)
             color_image = np.asanyarray(color_frame.get_data())
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
@@ -64,11 +66,14 @@ def frame_match(bag,weg_id,color_frame_num):
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_device_from_file(file_name)
-    #config.enable_all_streams()
+    config.enable_all_streams()
     profile = pipeline.start(config)
-    #device = profile.get_device()
-    #playback = device.as_playback()
-    #playback.set_real_time(True)
+
+    device = profile.get_device()
+    playback = device.as_playback()
+    playback.set_real_time(False)
+
+
     align_to = rs.stream.color
     align = rs.align(align_to)
     frame_list = []
@@ -86,28 +91,38 @@ def frame_match(bag,weg_id,color_frame_num):
                 qq = frame_list.index(x)
                 return int(qq)
             else:
+                print 'no frame {} founded'.format(a)
                 pass
     global i
-    i = search(color_frame_num)
+    #i = search(color_frame_num)
+    i = int(color_frame_num)
     print i
+    if not i:
+        print i
+
     try:
         while True:
             x = i
             frames = pipeline.wait_for_frames()
             aligned_frames = align.process(frames)
             depth_frame = aligned_frames.get_depth_frame()
+            if not depth_frame:
+                continue
             depth_color_frame = rs.colorizer().colorize(depth_frame)
             depth_color_image = np.asanyarray(depth_color_frame.get_data())
             vard = rs.frame.get_frame_number(depth_frame)
             if int(vard) == int(frame_list[i][2]):
-                print 'match'
+                print 'match depth{}'.format(vard)
                 try:
                     while True:
                         new_frames = pipeline.wait_for_frames()
                         new_aligned_frames = align.process(new_frames)
                         color_frame = new_aligned_frames.get_color_frame()
+                        if not color_frame:
+                            continue
                         var = rs.frame.get_frame_number(color_frame)
                         if int(var) == int(frame_list[i][1]):
+                            print 'match color{}'.format(var)
                             color_image = np.asanyarray(color_frame.get_data())
                             color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
                             print var, vard
@@ -115,12 +130,12 @@ def frame_match(bag,weg_id,color_frame_num):
                             fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
                             ax = fig.add_axes([0,0,1,1])
                             number = 'Wegnummer:{}\nFrame: c:{}/d:{}'.format(num, str(var), str(vard))
-                            markerprops = dict(marker='o', markersize=5, markeredgecolor='red')
-                            lineprops = dict(color='red', linewidth=2)
                             plt.imshow(color_image)
                             #plt.imshow(depth_color_image)
                             ax.grid(False)
-                            plt.text(500, -20, number, fontsize=15)
+                            fig.suptitle(number,fontsize = 20)
+                            markerprops = dict(marker='o', markersize=5, markeredgecolor='red')
+                            lineprops = dict(color='red', linewidth=2)
                             figManager = plt.get_current_fig_manager().window.state('zoomed')
                             ruler = Ruler(ax=ax,
                                           depth_frame=depth_frame,
@@ -149,17 +164,21 @@ def frame_match(bag,weg_id,color_frame_num):
                                     i = search(frame_num)
 
                             cid = plt.gcf().canvas.mpl_connect('key_press_event', quit_figure)
+                            #plt.xlim((-80,2000))
+                            #plt.ylim((1100,-100))
                             plt.show()
                             if x == i:
                                 i = 800
                             break
+                        else:
+                            print 'searching for: {}, now:{}'.format(frame_list[i][1], var)
 
                 finally:
                     pass
             elif i == 800:
                 break
             else:
-                print 'searching'
+                print 'searching for: {}, now:{}'.format(frame_list[i][2], vard)
                 pass
 
     except IndexError:
