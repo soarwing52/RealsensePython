@@ -18,6 +18,12 @@ pip install --upgrade pip
 pip install --user pyrealsense2 
 pip install --user opencv-python 
 ```
+### Data Preparation
+with taking pictures with OOP_Scripts/multithreadphoto - oneframe.py
+and write shapefiles and pngs with texttkmp.py
+
+the output will be ready for Arcgis
+
 
 ### Installing
 
@@ -34,24 +40,30 @@ in Arcgis use hyperlink and show script
 put in 
 
 ```
-import def_measure
-def OpenLink ( [Str_ID] , [bagpath] , [Color_text]):
-  bag_path = [bagpath] 
-  weg_id = [Str_ID]
-  color_id = [Color_text] 
-  def_measure.frame_match(bag_path,weg_id,color_id)
+import subprocess
+def OpenLink ( [weg_num]  , [png_path] ):
+  bag = [png_path] 
+  weg_id = [weg_num] 
+  comnd = 'python videoclass.py -w {} -p {}'.format(weg_id,bag)
+  subprocess.call(comnd)
   return
 ```
 or
 ```
-import def_measure
-def OpenLink ( [path2]  , [Path]  ):
-  bag_path = [Path] 
-  weg_id = [path2] 
-  def_measure.video(bag_path,weg_id)
+import subprocess
+def OpenLink ( [weg_num] , [foto_id]  , [png_path] ):
+  bag = [png_path] 
+  weg_id = [weg_num] 
+  c_f_n= str( [foto_id]  )
+  comnd = 'python measure.py -n {} -w {} -p {}'.format(c_f_n,weg_id,bag)
+  subprocess.call(comnd)
   return
 ```
 End with an example of getting some data out of the system or using it for a little demo
+
+in here we use subprocess because the current realsense library will freeze after set_real_time(False)
+and ArcMap don't support multithread nor multicore
+therefore we can't use the simple import but have to call out command line and then run python
 
 ## Running the tests
 
