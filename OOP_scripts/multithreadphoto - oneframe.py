@@ -5,7 +5,7 @@ import serial
 import datetime
 import threading
 import time
-
+import os
 
 def min2decimal(in_data):
   latgps = float(in_data)
@@ -107,6 +107,16 @@ def Camera():
         fotolog.close()
         pipeline.stop()
 
+def dir_generate(dir_name):
+    dir_name = str(dir_name)
+    if not os.path.exists(dir_name):
+        try:
+            os.makedirs(dir_name, 0o700)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
+
+
 def main():
     global i
     i=1
@@ -122,7 +132,15 @@ def main():
 
 if __name__ == '__main__':
     num = raw_input('Wegnummer: \n')
-    file_name = num + '.bag'
-    gpslog = open('gpslog_{}.txt'.format(num), 'a')
-    fotolog = open('fotolog_{}.txt'.format(num), 'a')
-    main()
+    dir_generate('bag')
+    dir_generate('foto_log')
+    dir_generate('gps_log')
+    file_name = 'bag/' + num + '.bag'
+    exist = os.path.isfile(file_name)
+    if exist:
+        raw_input('existed_file')
+
+    else:
+        gpslog = open('gps_log/gpslog_{}.txt'.format(num), 'a')
+        fotolog = open('foto_log/fotolog_{}.txt'.format(num), 'a')
+        main()
