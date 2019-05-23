@@ -7,15 +7,71 @@ import threading
 import time
 import os
 from math import sin, cos, sqrt, atan2, radians
-import simplekml
+
+def port_check():
+    serialPort = serial.Serial()
+    serialPort.baudrate = 4800
+    serialPort.bytesize = serial.EIGHTBITS
+    serialPort.parity = serial.PARITY_NONE
+    serialPort.timeout = 2
+    exist_port = None
+    for x in range(1, 10):
+        portnum = 'COM{}'.format(x)
+        serialPort.port = 'COM{}'.format(x)
+        try:
+            serialPort.open()
+            serialPort.close()
+            exist_port = portnum
+        except serial.SerialException:
+            pass
+        finally:
+            pass
+    if exist_port:
+        return exist_port
+    else:
+        print 'close other programs using gps'
+        raw_input('press enter to leave')
+        os._exit(0)
+
+def emptykml():
+    kml = os.path.exists('./kml/Foto.kml')
+    if kml:
+        return
+    else:
+        with open('./kml/Foto.kml' , 'w') as kml:
+            text = """<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+
+    </Document>
+</kml>
+    """
+            kml.write(text)
+
+
+def dir_generate(dir_name):
+    dir_name = str(dir_name)
+    if not os.path.exists(dir_name):
+        try:
+            os.makedirs(dir_name, 0o700)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
+
 
 def write_kml(lon,lat):
+    """
+    To append a point in kml
+    :param lon:
+    :param lat:
+    :return:
+    """
     myfile = open('./kml/Foto.kml', 'r')
     doc=myfile.readlines()
     myfile.close()
 
-    doc.insert(3,"""            <Placemark id="55855">
-                    <name>point</name>
+    doc.insert(3,"""            <Placemark id="foto">
+                    <name>fotopunkte</name>
                     <Point id="3">
                         <coordinates>{},{},0.0</coordinates>
                     </Point>
@@ -60,95 +116,111 @@ def GPS():
     '''
     the main function of starting the GPS
     '''
+    global camera_on, gps_on, gpsmsg, current_location
+    gps_on = False
     print('GPS start')
-    global camera_on, gps_on
-    camera_on = True
-    gps_on = True
     serialPort = serial.Serial()
-    serialPort.port = 'COM7'
+    serialPort.port = port_check()
     serialPort.baudrate = 4800
     serialPort.bytesize = serial.EIGHTBITS
     serialPort.parity = serial.PARITY_NONE
     serialPort.timeout = 2
     serialPort.open()
-    lon,lat = 0,0
+    print 'GPS opened successfully'
+
+
+    gps_on = True
+    lon, lat = 0, 0
     try:
         while True:
             line = serialPort.readline()
             data = line.split(",")
             present = datetime.datetime.now()
             date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
-            global gpsmsg, current_location
+
             if data[0] == '$GPRMC':
                 if data[2] == "A":
                     lat = min2decimal(data[3])
                     lon = min2decimal(data[5])
 
                 else:
-                    print 'searching gps'
+                    #print 'searching gps'
+                    pass
 
             elif data[0] == '$GPGGA':
                 if data[6] == '1':
                     lon = min2decimal(data[4])
                     lat = min2decimal(data[2])
                 else:
-                    print 'searching gps'
+                    #print 'searching gps'
+                    pass
 
-            gpsmsg = '{},{},{},{}\n'.format(i, lat, lon, date)
-            if not gpsmsg:
-                continue
-            current_location = [lon,lat]
-            print 'gps ready, current location:{}'.format(current_location)
-            with open('./kml/live.kml', 'w') as pos:
-                googleearth_message = '''<?xml version="1.0" encoding="UTF-8"?>
-                  <kml xmlns="http://www.opengis.net/kml/2.2">
-                    <Placemark>
-                      <name>Live Point</name>
-                      <description>hi im here</description>
-                      <Point>
-                        <coordinates>{},{},0</coordinates>
-                      </Point>
-                    </Placemark>
-                  </kml>'''.format(lon, lat)
-                pos.write(googleearth_message)
+            if lon ==0 or lat == 0:
+                print 'gps not ready'
+
+            else:
+                current_location = [lon,lat]
+                gpsmsg = '{},{},{}\n'.format(lat, lon, date)
+                #print 'gps ready, current location:{}'.format(current_location)
+
+                with open('./kml/live.kml', 'w') as pos:
+                    googleearth_message = '''<?xml version="1.0" encoding="UTF-8"?>
+                          <kml xmlns="http://www.opengis.net/kml/2.2">
+                            <Placemark>
+                              <name>Live Point</name>
+                              <description>hi im here</description>
+                              <Point>
+                                <coordinates>{},{},0</coordinates>
+                              </Point>
+                            </Placemark>
+                          </kml>'''.format(lon, lat)
+                    pos.write(googleearth_message)
 
             if gps_on is False:
                 break
+    except serial.SerialException:
+        print 'Error opening GPS'
+        gps_on = False
     finally:
-
+        serialPort.close()
         print('GPS finish')
 
-def Camera(num,file_name):
+def Camera(file_name):
     print 'Camera start'
-    global camera_on, camera_repeat, gps_on
+    global camera_on, camera_repeat, gps_on,i,gpsmsg,current_location
     camera_on = True
     camera_repeat = False
-    fotolog = open('foto_log/fotolog_{}.txt'.format(num), 'a')
-    global i,gpsmsg,current_location
     foto_location = [0,0]
-    current_location =[0,0]
+    current_location = [0,0]
+    i = 1
+
+    bag_name = './bag/{}.bag'.format(file_name)
+    fotolog = open('foto_log/{}.txt'.format(file_name), 'w')
+
+    # set configurations and start
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
     config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
-    config.enable_record_to_file(file_name)
+    config.enable_record_to_file(bag_name)
     profile = pipeline.start(config)
+    # get record device and pause it
     device = profile.get_device()
     recorder = device.as_recorder()
     recorder.pause()
+    # get sensor and set to high density
     depth_sensor = device.first_depth_sensor()
     depth_sensor.set_option(rs.option.visual_preset, 4)
     dev_range = depth_sensor.get_option_range(rs.option.visual_preset)
     preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
     print preset_name
+    # set frame queue size to max
     sensor = profile.get_device().query_sensors()
     for x in sensor:
-        print x
         x.set_option(rs.option.frames_queue_size, 32)
+    # set auto exposure but process data first
     color_sensor = profile.get_device().query_sensors()[1]
-    color_sensor.set_option(rs.option.auto_exposure_priority, False)
-
-
+    color_sensor.set_option(rs.option.auto_exposure_priority, True)
     try:
         while True:
             frames = pipeline.wait_for_frames()
@@ -156,32 +228,25 @@ def Camera(num,file_name):
             color_frame = frames.get_color_frame()
             if not depth_frame or not color_frame:
                 continue
-
-            depth_image = np.asanyarray(depth_frame.get_data())
-            depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.03), cv2.COLORMAP_JET)
-            depth_colormap_resize = cv2.resize(depth_colormap,(848,480))
-            color_image = np.asanyarray(color_frame.get_data())
-            color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
-            color_cvt_2 = cv2.resize(color_cvt, (640,480))
-            images = np.hstack((color_cvt_2, depth_colormap_resize))
-            cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
-            cv2.imshow('Color', images)
             key = cv2.waitKey(1)
-
             if key == 32 or gps_dis(current_location,foto_location) > 15:
+                start = time.time()
                 recorder.resume()
+                time.sleep(0.04)
+                frames = pipeline.wait_for_frames()
+                depth_frame = frames.get_depth_frame()
+                color_frame = frames.get_color_frame()
                 var = rs.frame.get_frame_number(color_frame)
                 vard = rs.frame.get_frame_number(depth_frame)
-                time.sleep(0.033)
                 logmsg = '{},{},{},{}'.format(i, str(var), str(vard), gpsmsg)
                 fotolog.write(logmsg)
                 log_list = logmsg.split(',')
-                foto_location = [float(log_list[5]),float(log_list[4])]
+                foto_location = [float(log_list[4]),float(log_list[3])]
                 print 'photo taken at:{}'.format(foto_location)
                 recorder.pause()
-                saver = rs.save_single_frameset('./frameset/{}_{}_'.format(num, i))
-                saver.process(frames)
-                write_kml(float(log_list[5]),float(log_list[4]))
+                end = time.time()
+                print end - start
+                write_kml(float(log_list[4]),float(log_list[3]))
                 i += 1
                 continue
 
@@ -190,65 +255,75 @@ def Camera(num,file_name):
                 camera_on = False
                 gps_on = False
                 camera_repeat = False
+                print('Camera finish\n')
                 break
             elif key == 114:
                 cv2.destroyAllWindows()
                 camera_on = False
                 camera_repeat = True
+                print 'camera will restart'
+                break
+            elif gps_on is False:
+                cv2.destroyAllWindows()
+                camera_repeat = False
                 break
 
-    finally:
-        print('Camera finish\n')
+            depth_color_frame = rs.colorizer().colorize(depth_frame)
+            depth_image = np.asanyarray(depth_color_frame.get_data())
+            depth_colormap_resize = cv2.resize(depth_image,(424,240))
+            color_image = np.asanyarray(color_frame.get_data())
+            color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
+            color_cvt_2 = cv2.resize(color_cvt, (320,240))
+            images = np.hstack((color_cvt_2, depth_colormap_resize))
+            cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
+            cv2.imshow('Color', images)
 
+    except NameError:
+        os._exit(0)
+
+    finally:
         fotolog.close()
         pipeline.stop()
 
-def dir_generate(dir_name):
-    dir_name = str(dir_name)
-    if not os.path.exists(dir_name):
-        try:
-            os.makedirs(dir_name, 0o700)
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                raise
+
 
 def camera_loop():
-    global i, camera_repeat
-    i = 1
+    global camera_repeat, gps_on
     num = 1
     camera_repeat = True
+    now = datetime.datetime.now()
+    time.sleep(1)
     try:
-        while True:
-            file_name = 'bag/{}.bag'.format(num)
-            exist = os.path.isfile(file_name)
-            if exist:
-
-                num+=1
-            else:
-                print file_name
-                try:
-                    while camera_repeat is True:
-                        print num
-                        file_name = 'bag/{}.bag'.format(num)
-                        Camera(num,file_name)
-                        num +=1
-                finally:
-                    print 'exit camera'
+        while gps_on is False:
+            if gps_on is True:
                 break
     finally:
-        print 'camera finish'
+        print 'Starting Camera'
+
+    try:
+        while gps_on is True:
+            file_name = '{:02d}{}_{}'.format(now.month, now.day, num)
+            bag_name = './bag/{}.bag'.format(file_name)
+            exist = os.path.isfile(bag_name)
+            if exist:
+                num+=1
+            elif camera_repeat == False:
+                break
+            else:
+                print 'current filename:{}'.format(file_name)
+                Camera(file_name)
+                continue
+
+    finally:
+        pass
 
 
 def main():
-    dir_generate('bag')
-    dir_generate('foto_log')
-    dir_generate('gps_log')
-    dir_generate('frameset')
-    dir_generate('kml')
+    folder_list = ('bag','foto_log','kml')
+    for folder in folder_list:
+        dir_generate(folder)
 
-    kml = simplekml.Kml()
-    kml.newpoint(name='point', coords = [(9.0,52.0)])
-    kml.save('./kml/Foto.kml')
+    emptykml()
 
     gps_thread = threading.Thread(target=GPS, name='T1')
     camera_thread = threading.Thread(target=camera_loop, name='T2')
