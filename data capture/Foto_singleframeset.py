@@ -71,7 +71,7 @@ def write_kml(lon,lat):
     myfile.close()
 
     doc.insert(3,"""            <Placemark id="foto">
-                    <name>fotopunkte</name>
+                    <name>P</name>
                     <Point id="3">
                         <coordinates>{},{},0.0</coordinates>
                     </Point>
@@ -116,7 +116,7 @@ def GPS():
     '''
     the main function of starting the GPS
     '''
-    global camera_on, gps_on, gpsmsg, current_location
+    global camera_on, gps_on, current_location, lon, lat
     gps_on = False
     print('GPS start')
     serialPort = serial.Serial()
@@ -135,8 +135,7 @@ def GPS():
         while True:
             line = serialPort.readline()
             data = line.split(",")
-            present = datetime.datetime.now()
-            date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
+
 
             if data[0] == '$GPRMC':
                 if data[2] == "A":
@@ -159,8 +158,7 @@ def GPS():
                 print 'gps not ready'
 
             else:
-                current_location = [lon,lat]
-                gpsmsg = '{},{},{}\n'.format(lat, lon, date)
+                current_location = (lon,lat)
                 #print 'gps ready, current location:{}'.format(current_location)
 
                 with open('./kml/live.kml', 'w') as pos:
@@ -187,7 +185,7 @@ def GPS():
 
 def Camera(file_name):
     print 'Camera start'
-    global camera_on, camera_repeat, gps_on,i,gpsmsg,current_location
+    global camera_on, camera_repeat, gps_on,i,gpsmsg,current_location, lon, lat
     camera_on = True
     camera_repeat = False
     foto_location = [0,0]
@@ -223,6 +221,8 @@ def Camera(file_name):
     color_sensor.set_option(rs.option.auto_exposure_priority, True)
     try:
         while True:
+            present = datetime.datetime.now()
+            date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
             frames = pipeline.wait_for_frames()
             depth_frame = frames.get_depth_frame()
             color_frame = frames.get_color_frame()
@@ -232,21 +232,20 @@ def Camera(file_name):
             if key == 32 or gps_dis(current_location,foto_location) > 15:
                 start = time.time()
                 recorder.resume()
-                time.sleep(0.04)
+                time.sleep(0.05)
                 frames = pipeline.wait_for_frames()
                 depth_frame = frames.get_depth_frame()
                 color_frame = frames.get_color_frame()
                 var = rs.frame.get_frame_number(color_frame)
                 vard = rs.frame.get_frame_number(depth_frame)
-                logmsg = '{},{},{},{}'.format(i, str(var), str(vard), gpsmsg)
-                fotolog.write(logmsg)
-                log_list = logmsg.split(',')
-                foto_location = [float(log_list[4]),float(log_list[3])]
+                foto_location = (lon,lat)
                 print 'photo taken at:{}'.format(foto_location)
                 recorder.pause()
+                logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
+                fotolog.write(logmsg)
                 end = time.time()
                 print end - start
-                write_kml(float(log_list[4]),float(log_list[3]))
+                write_kml(lon,lat)
                 i += 1
                 continue
 
