@@ -190,6 +190,7 @@ def Camera(file_name):
     camera_repeat = False
     foto_location = [0,0]
     current_location = [0,0]
+    Pause = False
     i = 1
 
     bag_name = './bag/{}.bag'.format(file_name)
@@ -229,27 +230,31 @@ def Camera(file_name):
             if not depth_frame or not color_frame:
                 continue
             key = cv2.waitKey(1)
-            if key == 32 or gps_dis(current_location,foto_location) > 15:
-                start = time.time()
-                recorder.resume()
-                time.sleep(0.05)
-                frames = pipeline.wait_for_frames()
-                depth_frame = frames.get_depth_frame()
-                color_frame = frames.get_color_frame()
-                var = rs.frame.get_frame_number(color_frame)
-                vard = rs.frame.get_frame_number(depth_frame)
-                foto_location = (lon,lat)
-                print 'photo taken at:{}'.format(foto_location)
-                recorder.pause()
-                logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
-                fotolog.write(logmsg)
-                end = time.time()
-                print end - start
-                write_kml(lon,lat)
-                i += 1
-                continue
 
-            elif key & 0xFF == ord('q') or key == 27:
+            if Pause is False:
+                if key == 32 or gps_dis(current_location,foto_location) > 15:
+                    start = time.time()
+                    recorder.resume()
+                    time.sleep(0.05)
+                    frames = pipeline.wait_for_frames()
+                    depth_frame = frames.get_depth_frame()
+                    color_frame = frames.get_color_frame()
+                    var = rs.frame.get_frame_number(color_frame)
+                    vard = rs.frame.get_frame_number(depth_frame)
+                    foto_location = (lon,lat)
+                    print 'photo taken at:{}'.format(foto_location)
+                    recorder.pause()
+                    logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
+                    fotolog.write(logmsg)
+                    end = time.time()
+                    print end - start
+                    write_kml(lon,lat)
+                    i += 1
+                    continue
+            elif Pause is True:
+                pass
+
+            if key & 0xFF == ord('q') or key == 27:
                 cv2.destroyAllWindows()
                 camera_on = False
                 gps_on = False
@@ -266,6 +271,13 @@ def Camera(file_name):
                 cv2.destroyAllWindows()
                 camera_repeat = False
                 break
+            elif cv2.waitKey(1) & 0xFF == ord('p'):
+                if Pause is False:
+                    print 'pause pressed'
+                    Pause = True
+                elif Pause is True:
+                    print 'restart'
+                    Pause = False
 
             depth_color_frame = rs.colorizer().colorize(depth_frame)
             depth_image = np.asanyarray(depth_color_frame.get_data())
