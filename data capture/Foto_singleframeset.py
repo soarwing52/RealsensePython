@@ -301,7 +301,7 @@ def camera_loop():
 
     try:
         while gps_on is True:
-            file_name = '{:02d}{}_{}'.format(now.month, now.day, num)
+            file_name = '{:02d}{}_{:03d}'.format(now.month, now.day, num)
             bag_name = './bag/{}.bag'.format(file_name)
             exist = os.path.isfile(bag_name)
             if exist:
