@@ -4,9 +4,8 @@ in this project will have record bag and measure picture from bag
 
 ## Getting Started
 
-functions:
-q for leave
-h for last/j for next /u for search frame
+This is a project to get single frames from D435 and save a serie of frames in a bag
+#the save_single_frame function can't get depth data, show always 0,0,0, therefore I can only use rs.recorder
 
 
 ### Prerequisites
