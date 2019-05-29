@@ -4,9 +4,8 @@ in this project will have record bag and measure picture from bag
 
 ## Getting Started
 
-functions:
-q for leave
-h for last/j for next /u for search frame
+This is a project to get single frames from D435 and save a serie of frames in a bag
+#the save_single_frame function can't get depth data, show always 0,0,0, therefore I can only use rs.recorder
 
 
 ### Prerequisites
@@ -17,10 +16,16 @@ What things you need to install the software and how to install them
 pip install --upgrade pip
 pip install --user pyrealsense2 
 pip install --user opencv-python 
+pip install --user argparse
 ```
 ### Data Preparation
-with taking pictures with OOP_Scripts/multithreadphoto - oneframe.py
-and write shapefiles and pngs with texttkmp.py
+use the data capture it will create 
+bag files
+foto_log
+kml/ live position and photos
+
+use the shp& png to create shp and png
+
 
 the output will be ready for Arcgis
 
