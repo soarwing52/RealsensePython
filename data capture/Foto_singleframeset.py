@@ -40,11 +40,44 @@ def emptykml():
     else:
         with open('./kml/Foto.kml' , 'w') as kml:
             text = """<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
-    <Document id="1">
-
-    </Document>
-</kml>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1">
+	<name>Foto.kml</name>
+	<open>1</open>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/target.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<color>ff00ffff</color>
+			<scale>0.945455</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/target.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	</Document>
+	</kml>
     """
             kml.write(text)
 
@@ -70,8 +103,9 @@ def write_kml(lon,lat):
     doc=myfile.readlines()
     myfile.close()
 
-    doc.insert(3,"""            <Placemark id="foto">
+    doc.insert(37,"""            <Placemark id="foto">
                     <name>P</name>
+                    <styleUrl>#m_ylw-pushpin</styleUrl>
                     <Point id="3">
                         <coordinates>{},{},0.0</coordinates>
                     </Point>

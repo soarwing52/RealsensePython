@@ -1,7 +1,6 @@
 import os
 import piexif
 from fractions import Fraction
-import datetime
 
 def to_deg(value, loc):
     """convert decimal coordinates into degrees, munutes and seconds tuple
@@ -59,33 +58,21 @@ def set_gps_location(file_name, lat, lng, altitude):
     exif_bytes = piexif.dump(exif_dict)
     piexif.insert(exif_bytes, file_name)
 
-def insert_date():
-    """
-    filename = 'image.jpg'
-    exif_dict = {'Exif': {piexif.ExifIFD.DateTimeOriginal: datetime(2018, 1, 1, 0, 0, 0).strftime("%Y:%m:%d %H:%M:%S")}}
-    exif_bytes = piexif.dump(exif_dict)
-    piexif.insert(exif_bytes, filename)
-    """
-
-    print datetime.datetime(2018, 1, 1, 0, 0, 0).strftime("%Y:%m:%d %H:%M:%S")
-
-def main():
+if __name__ == '__main__':
     fotolog = r'C:\Users\cyh\Desktop\test\shp'
     project_dir = os.path.dirname(fotolog)
     png_dir = project_dir + '/jpg'
     for x in os.listdir(fotolog):
-        fullpath = fotolog + '/' + x
-        with open(fullpath, 'r') as log:
+        fullpath = fotolog +'/' +x
+        with open(fullpath,'r') as log:
             for y in log:
                 data = y.split(',')
-                num, Lon, Lat = data[1], float(data[3]), float(data[4])
-                jpgname = '{}/{}-{}.jpg'.format(png_dir, x[:-4], num)
+                num, Lon,Lat = data[1],float(data[3]),float(data[4])
+                jpgname = '{}/{}-{}.jpg'.format(png_dir,x[:-4],num)
                 try:
-                    set_gps_location(jpgname, Lat, Lon, 0)
+                    set_gps_location(jpgname,Lat,Lon,0)
                 except IOError:
                     print jpgname + 'not found'
                     continue
                 finally:
                     pass
-if __name__ == '__main__':
-    insert_date()

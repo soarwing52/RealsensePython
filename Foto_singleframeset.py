@@ -40,9 +40,9 @@ def emptykml():
     else:
         with open('./kml/Foto.kml' , 'w') as kml:
             text = """<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
-    <Document id="1">
-    	<name>Foto.kml</name>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1">
+	<name>Foto.kml</name>
 	<open>1</open>
 	<Style id="s_ylw-pushpin">
 		<IconStyle>
@@ -76,8 +76,8 @@ def emptykml():
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
-    </Document>
-</kml>
+	</Document>
+	</kml>
     """
             kml.write(text)
 
@@ -116,6 +116,7 @@ def write_kml(lon,lat):
     f.write(contents)
     f.close()
 
+
 def gps_dis(location_1,location_2):
     '''
     this is the calculation of the distance between two long/lat locations
@@ -138,6 +139,7 @@ def gps_dis(location_1,location_2):
     #print("Result:", distance)
     return distance
 
+
 def min2decimal(in_data):
     '''transforming the data of long lat '''
     latgps = float(in_data)
@@ -145,6 +147,7 @@ def min2decimal(in_data):
     latmin = latgps - latdeg * 100
     lat = latdeg + (latmin / 60)
     return lat
+
 
 def GPS():
     '''
@@ -216,6 +219,7 @@ def GPS():
     finally:
         serialPort.close()
         print('GPS finish')
+
 
 def Camera(file_name):
     print 'Camera start'
@@ -329,7 +333,6 @@ def Camera(file_name):
     finally:
         fotolog.close()
         pipeline.stop()
-
 
 
 def camera_loop():
