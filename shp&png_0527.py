@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from Tkinter import *
 import tkFileDialog
 import os
@@ -9,6 +8,23 @@ import pyrealsense2 as rs
 import numpy as np
 import cv2
 import multiprocessing as mp
+
+
+def test_bag(input_file):
+    try:
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_device_from_file(input_file, False)
+        config.enable_all_streams()
+        profile = pipeline.start(config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
+        pipeline.stop()
+    except RuntimeError:
+        print '{} unindexed'.format(input_file)
+    finally:
+        pass
 
 
 def dir_generate(in_dir):
@@ -31,25 +47,27 @@ def get_dir(var):
     return project_dir
 
 
-def frame_list(input_num):
-    """write the frame list of the bag file"""
-    global project_dir
+def frame_list(input_file):
+    """write the frame list of the bag file
+    input: abspath"""
+    input_num = os.path.basename(input_file)[:-4]
+    project_dir = os.path.dirname(os.path.dirname(input_file))
     list_dir = dir_generate(project_dir + '/list')
-    input_file = '{}/bag/{}.bag'.format(project_dir, input_num)
 
-    pipeline = rs.pipeline()
-    config = rs.config()
-    config.enable_device_from_file(input_file, False)
-    config.enable_all_streams()
-    profile = pipeline.start(config)
-    device = profile.get_device()
-    playback = device.as_playback()
-    playback.set_real_time(False)
-    align_to = rs.stream.color
-    align = rs.align(align_to)
     c_fold = open('{}/{}_color.txt'.format(list_dir, input_num), 'w')
     d_fold = open('{}/{}_depth.txt'.format(list_dir, input_num), 'w')
+
     try:
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_device_from_file(input_file, False)
+        config.enable_all_streams()
+        profile = pipeline.start(config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
+        align_to = rs.stream.color
+        align = rs.align(align_to)
         while True:
             frames = pipeline.wait_for_frames()
             aligned_frames = align.process(frames)
@@ -68,14 +86,13 @@ def frame_list(input_num):
     finally:
         c_fold.close()
         d_fold.close()
-        pipeline.stop()
 
 
-def match_frame_list(input_num):
+def match_frame_list(input_file):
     """match color and depth within the time of 25ms"""
-    global project_dir
+    input_num = os.path.basename(input_file)[:-4]
+    project_dir = os.path.dirname(os.path.dirname(input_file))
     list_dir = dir_generate(project_dir + '/list')
-    input_file = '{}/bag/{}.bag'.format(project_dir, input_num)
 
     with open('{}/{}_color.txt'.format(list_dir, input_num), 'r') as color:
         color_frame_list = [x.strip().split(',') for x in color]
@@ -107,20 +124,17 @@ def match_frame_list(input_num):
     print 'finished match list ' + input_file
 
 
-def create_list(t):
+def create_list():
     """TKinter Button, loop through the bag folder and create color,depth,match list"""
-    global project_dir
-    list_dir = dir_generate(project_dir + '/list')
+    global project_dir,t
     bag_dir = project_dir + '/bag'
 
-    for x in os.listdir(bag_dir):
-        try:
-            frame_list(x[:-4])
-            match_frame_list(x[:-4])
-        except IOError:
-            print '{} not excutable'.format(x)
-        finally:
-            pass
+    x_list = ['{}/{}'.format(bag_dir,x) for x in os.listdir(bag_dir) ]
+    pool = mp.Pool()
+    pool.map(test_bag,x_list)
+    pool.map(frame_list, x_list)
+    pool.map(match_frame_list, x_list)
+
     t.insert(END, 'match list fertig\n')
 
 
@@ -155,9 +169,9 @@ def pair(num):
                 pass
 
 
-def pair_list(t):
+def pair_list():
     """Tkinter Button, loop through files in fotolog and create paired matcher.txt in shp folder"""
-    global project_dir, tet
+    global project_dir, tet,t
     list_dir = dir_generate(project_dir + '/list')
     foto_log = project_dir + '/foto_log'
     shp_dir = dir_generate(project_dir + '/shp')
@@ -177,9 +191,9 @@ def pair_list(t):
     t.insert(END, 'match list fertig\n')
 
 
-def matchershp(t):
+def matchershp():
     """create the shp from the matcher.txt"""
-    global project_dir
+    global project_dir,t
     shp_dir = dir_generate(project_dir + '/shp')
     arcpy.env.overwriteOutput = True
     spRef = 'WGS 1984'
@@ -188,10 +202,10 @@ def matchershp(t):
     t.insert(END, 'Fotopunkte.shp fertig\n')
 
 
-def Fotopunkte(t):
+def Fotopunkte():
     """create Fotopunkte.txt and shp from all fotologs, the lost frames and the small latency caused frame number not
     match can't be detected """
-    global project_dir
+    global project_dir,t
     shp_dir = dir_generate(project_dir + '/shp')
     fotolog = project_dir + '/foto_log'
     foto_shp = open(project_dir + '/shp/Fotopunkte.txt', 'w')
@@ -256,10 +270,10 @@ def color_to_png(input_file):
         pass
 
 
-def test_png(t):
+def test_png():
     """Loop through all the bag files until all pngs were created
     if theres unreadable bag file it will keep on looping"""
-    global project_dir
+    global project_dir,t
     png_dir = dir_generate(project_dir + '/png')
     try:
         while True:
@@ -286,9 +300,15 @@ def test_png(t):
         print 'png fertig'
         t.insert(END, 'PNG fertig\n')
 
+def from_bag_to_list():
+    create_list()
+    pair_list()
+    matchershp()
+
 
 def main():
     """TKinter for data process"""
+    global t
     root = Tk()
     root.title('shapefile generator')
     root.geometry('500x300')
@@ -306,11 +326,9 @@ def main():
     t = Text(frame_b, width=40, height=10)
     t.pack()
 
-    Button(frame_2, text='1.list frames', command=lambda: create_list(t)).grid(row=1, column=1)
-    Button(frame_2, text='2.match GPS', command=lambda: pair_list(t)).grid(row=1, column=2)
-    Button(frame_2, text='3.generate shp', command=lambda: matchershp(t)).grid(row=1, column=3)
-    Button(frame_2, text='generate png', command=lambda: test_png(t)).grid(row=1, column=4)
-    Button(frame_2, text='generate Foto shp', command=lambda: Fotopunkte(t)).grid(row=1, column=5)
+    Button(frame_2, text='generage shp', command=from_bag_to_list).grid(row=1, column=1)
+    Button(frame_2, text='generate png', command=lambda: test_png()).grid(row=1, column=2)
+
 
     root.mainloop()
 
