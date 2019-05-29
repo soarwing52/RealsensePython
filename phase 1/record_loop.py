@@ -36,23 +36,20 @@ def record():
         while True:
             # Get frameset of depth
             frames = pipeline.wait_for_frames()
-            #align_to = rs.stream.color
-            #align = rs.align(align_to)
-            #aligned_frames = align.process(frames)
-            #depth_frame = aligned_frames.get_depth_frame()
-            #color_frame = aligned_frames.get_color_frame()
             depth_frame = frames.get_depth_frame()
             color_frame = frames.get_color_frame()
-            var = rs.frame.get_frame_number(color_frame)
-            #print 'frame number: ' + str(var)
-
-            depth_image = np.asanyarray(depth_frame.get_data())
+            if not depth_frame or not color_frame:
+                continue
+            depth_color_frame = rs.colorizer().colorize(depth_frame)
+            depth_image = np.asanyarray(depth_color_frame.get_data())
+            depth_colormap_resize = cv2.resize(depth_image,(424,240))
             color_image = np.asanyarray(color_frame.get_data())
-
+            color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
+            color_cvt_2 = cv2.resize(color_cvt, (320,240))
+            images = np.hstack((color_cvt_2, depth_colormap_resize))
             cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
-            # cv2.namedWindow('Depth', cv2.WINDOW_AUTOSIZE)
-            # cv2.imshow('Depth', depth_image)
-            cv2.imshow('Color', color_image)
+            cv2.imshow('Color', images)
+
             key = cv2.waitKey(1)
 
             time_2 = time.time()
