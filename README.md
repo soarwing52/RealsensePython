@@ -17,10 +17,16 @@ What things you need to install the software and how to install them
 pip install --upgrade pip
 pip install --user pyrealsense2 
 pip install --user opencv-python 
+pip install --user argparse
 ```
 ### Data Preparation
-with taking pictures with OOP_Scripts/multithreadphoto - oneframe.py
-and write shapefiles and pngs with texttkmp.py
+use the data capture it will create 
+bag files
+foto_log
+kml/ live position and photos
+
+use the shp& png to create shp and png
+
 
 the output will be ready for Arcgis
 
