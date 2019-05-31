@@ -59,33 +59,57 @@ def set_gps_location(file_name, lat, lng, altitude):
     exif_bytes = piexif.dump(exif_dict)
     piexif.insert(exif_bytes, file_name)
 
-def insert_date():
-    """
-    filename = 'image.jpg'
-    exif_dict = {'Exif': {piexif.ExifIFD.DateTimeOriginal: datetime(2018, 1, 1, 0, 0, 0).strftime("%Y:%m:%d %H:%M:%S")}}
+def insert_date(filename, date):
+
+    exif_dict = {'Exif': {piexif.ExifIFD.DateTimeOriginal: date}}
     exif_bytes = piexif.dump(exif_dict)
     piexif.insert(exif_bytes, filename)
-    """
+    print 'insert'
 
-    print datetime.datetime(2018, 1, 1, 0, 0, 0).strftime("%Y:%m:%d %H:%M:%S")
 
 def main():
-    fotolog = r'C:\Users\cyh\Desktop\test\shp'
+    fotolog = r'C:\Users\cyh\Desktop\test\shp\matcher.txt'
     project_dir = os.path.dirname(fotolog)
     png_dir = project_dir + '/jpg'
-    for x in os.listdir(fotolog):
-        fullpath = fotolog + '/' + x
-        with open(fullpath, 'r') as log:
-            for y in log:
-                data = y.split(',')
-                num, Lon, Lat = data[1], float(data[3]), float(data[4])
-                jpgname = '{}/{}-{}.jpg'.format(png_dir, x[:-4], num)
-                try:
-                    set_gps_location(jpgname, Lat, Lon, 0)
-                except IOError:
-                    print jpgname + 'not found'
-                    continue
-                finally:
-                    pass
+    with open(fotolog, 'r') as log:
+        log.readline()
+        for y in log:
+            data = y.split(',')
+            weg_num, frame, Lat, Lon = data[0], data[2], float(data[4]), float(data[5])
+            month = weg_num.split('_')[0][:2]
+            day = weg_num.split('_')[0][2:]
+            time = data[6]
+            date = '2019:{}:{} {}'.format(month,day,time)
+            jpgname = '{}/{}-{}.jpg'.format(png_dir, weg_num, frame)
+            try:
+                set_gps_location(jpgname, Lat, Lon, 0)
+                insert_date(jpgname, date)
+            except IOError:
+                print jpgname + ' not found'
+                continue
+            finally:
+                pass
+    print 'tagged'
 if __name__ == '__main__':
-    insert_date()
+    fotolog = r'C:\Users\cyh\Desktop\test\shp\matcher.txt'
+    project_dir = os.path.dirname(os.path.dirname(fotolog))
+    png_dir = project_dir + '/jpg'
+    with open(fotolog, 'r') as log:
+        log.readline()
+        for y in log:
+            data = y.split(',')
+            print y
+            weg_num, frame, Lat, Lon = data[0], data[2], float(data[4]), float(data[5])
+            month = weg_num.split('_')[0][:2]
+            day = weg_num.split('_')[0][2:]
+            time = data[6]
+            date = '2019:{}:{} {}'.format(month,day,time)
+            jpgname = '{}/{}-{}.jpg'.format(png_dir, weg_num, frame)
+            try:
+                insert_date(jpgname, date)
+            except IOError:
+                print jpgname + ' not found'
+                continue
+            finally:
+                pass
+    print 'tagged'

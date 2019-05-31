@@ -216,9 +216,9 @@ def create_list():
     t.insert(END, 'match list fertig\n')
 
 
-def pair(num):
+def pair(num,tet,ans):
     """match the list of _matched.txt and fotolog, with the accuracy of +-5 frames"""
-    global tet, project_dir
+    project_dir = ans
     match = open('{}/list/{}_matched.txt'.format(project_dir, num), 'r')
     foto = open('{}/foto_log/{}.txt'.format(project_dir, num), 'r')
 
@@ -235,21 +235,19 @@ def pair(num):
             Lat = lines_l[4]
             Time = lines_l[8]
             png = '{}/png/{}-{}.png'.format(project_dir, num, color_m)
-            try:
-                ans = abs(int(color_l) - int(color_m))
-                if ans < 5:
-                    info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, png)
-                    tet.write(info)
-                else:
-                    # print 'no'
-                    continue
-            finally:
-                pass
+
+            ans = abs(int(color_l) - int(color_m))
+            if ans < 5:
+                info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, png)
+                tet.write(info)
+
+    print num + ' done'
 
 
-def pair_list():
+def pair_list(ans):
     """Tkinter Button, loop through files in fotolog and create paired matcher.txt in shp folder"""
-    global project_dir, tet,t
+    project_dir = ans
+
     list_dir = dir_generate(project_dir + '/list')
     foto_log = project_dir + '/foto_log'
     shp_dir = dir_generate(project_dir + '/shp')
@@ -260,13 +258,12 @@ def pair_list():
     for log in os.listdir(foto_log):
         num = log.split('.')[0]
         try:
-            pair(num)
+            pair(num,tet,ans)
         except IOError:
             print 'no file {}'.format(num)
         finally:
-            pass
+            print 'pair list done'
 
-    t.insert(END, 'match list fertig\n')
 
 
 def matchershp():
@@ -379,15 +376,15 @@ def test_png():
         t.insert(END, 'PNG fertig\n')
 
 
-def from_bag_to_list():
-    create_list()
-    pair_list()
+def from_bag_to_list(ans):
+    project_dir = ans
+    pair_list(ans)
     matchershp()
 
 
 def main():
     """TKinter for data process"""
-    global t
+    global t, project_dir
     root = Tk()
     root.title('shapefile generator')
     root.geometry('500x300')
@@ -405,9 +402,10 @@ def main():
     t = Text(frame_b, width=40, height=10)
     t.pack()
 
-    Button(frame_2, text='generage shp', command=from_bag_to_list).grid(row=1, column=1)
-    Button(frame_2, text='generate jpg', command=lambda: test_png()).grid(row=1, column=2)
-    Button(frame_2, text='geotag', command=geotag).grid(row=1, column=3)
+    Button(frame_2, text='generage list', command=lambda: create_list()).grid(row=1, column=1)
+    Button(frame_2, text='generage shp', command=lambda: from_bag_to_list(project_dir)).grid(row=1, column=2)
+    Button(frame_2, text='generate jpg', command=lambda: test_png()).grid(row=1, column=3)
+    Button(frame_2, text='geotag', command=geotag).grid(row=1, column=4)
 
 
     root.mainloop()

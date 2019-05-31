@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f5de92a-f1c8-423a-a575-f17d51a3b48e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/geotag.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foto_singleframeset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Foto_singleframeset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data capture/Foto_singleframeset.py" beforeDir="false" afterPath="$PROJECT_DIR$/data capture/Foto_singleframeset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratchbook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shp&amp;png_0527.py" beforeDir="false" afterPath="$PROJECT_DIR$/shp&amp;png_0527.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,13 +14,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scratchbook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="1560">
+              <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="403" column="12" lean-forward="true" selection-start-line="403" selection-start-column="12" selection-end-line="403" selection-end-column="12" />
+              <folding>
+                <element signature="e#277#793#0" />
+                <element signature="e#832#1028#0" />
+                <element signature="e#1088#2077#0" />
+                <element signature="e#2097#2741#0" />
+                <element signature="e#2774#3214#0" />
+                <element signature="e#3247#3462#0" />
+                <element signature="e#3487#3676#0" />
+                <element signature="e#3711#5215#0" />
+                <element signature="e#5256#6404#0" />
               </folding>
             </state>
           </provider>
@@ -54,24 +72,23 @@
         <option value="$PROJECT_DIR$/check.py" />
         <option value="$PROJECT_DIR$/sss.py" />
         <option value="$PROJECT_DIR$/Foto_singleframeset.py" />
-        <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
         <option value="$PROJECT_DIR$/geotag.py" />
         <option value="$PROJECT_DIR$/scratchbook.py" />
+        <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1939" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,6 +116,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -117,7 +135,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.scratchbook">
+  <component name="RunManager" selected="Python.shp&amp;png_0527">
     <configuration name="Foto_singleframeset" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -219,9 +237,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scratchbook" />
         <item itemvalue="Python.shp&amp;png_0527" />
         <item itemvalue="Python tests.Nosetests in shp&amp;png_0527.py" />
+        <item itemvalue="Python.scratchbook" />
         <item itemvalue="Python.Foto_singleframeset" />
         <item itemvalue="Python.check" />
       </list>
@@ -266,16 +284,17 @@
       <option name="project" value="LOCAL" />
       <updated>1559133828497</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add geotagging">
+      <created>1559140010684</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1559140010684</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 09h 52m 34s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 09h 55m 28s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 09h 55m 35s.xml">
       <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
     </history-entry>
@@ -300,6 +319,12 @@
     <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 14h 33m 29s.xml">
       <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 16h 59m 57s.xml">
+      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 17h 21m 09s.xml">
+      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -311,15 +336,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2485129" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24815595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34135976" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34127843" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -352,6 +377,16 @@
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
           <line>6</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
+          <line>118</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -441,16 +476,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sss.py" />
     <entry file="file://$PROJECT_DIR$/kml/Foto.kml" />
-    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -497,13 +522,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scratchbook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state relative-caret-position="1560">
+          <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="403" column="12" lean-forward="true" selection-start-line="403" selection-start-column="12" selection-end-line="403" selection-end-column="12" />
+          <folding>
+            <element signature="e#277#793#0" />
+            <element signature="e#832#1028#0" />
+            <element signature="e#1088#2077#0" />
+            <element signature="e#2097#2741#0" />
+            <element signature="e#2774#3214#0" />
+            <element signature="e#3247#3462#0" />
+            <element signature="e#3487#3676#0" />
+            <element signature="e#3711#5215#0" />
+            <element signature="e#5256#6404#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
