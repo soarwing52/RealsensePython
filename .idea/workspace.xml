@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f5de92a-f1c8-423a-a575-f17d51a3b48e" name="Default Changelist" comment="">
+    <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratchbook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shp&amp;png_0527.py" beforeDir="false" afterPath="$PROJECT_DIR$/shp&amp;png_0527.py" afterDir="false" />
@@ -13,52 +13,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scratchbook.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="403" column="12" lean-forward="true" selection-start-line="403" selection-start-column="12" selection-end-line="403" selection-end-column="12" />
-              <folding>
-                <element signature="e#277#793#0" />
-                <element signature="e#832#1028#0" />
-                <element signature="e#1088#2077#0" />
-                <element signature="e#2097#2741#0" />
-                <element signature="e#2774#3214#0" />
-                <element signature="e#3247#3462#0" />
-                <element signature="e#3487#3676#0" />
-                <element signature="e#3711#5215#0" />
-                <element signature="e#5256#6404#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
-    <dirStrings>
-      <dir>C:\Users\cyh\Documents\GitHub\RealsensePython</dir>
-    </dirStrings>
+    <findStrings>
+      <find>test</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,13 +34,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/phase 1/read_bag.py" />
-        <option value="$PROJECT_DIR$/phase 1/record_loop.py" />
-        <option value="$PROJECT_DIR$/phase 1/color_to_png.py" />
-        <option value="$PROJECT_DIR$/check.py" />
-        <option value="$PROJECT_DIR$/sss.py" />
-        <option value="$PROJECT_DIR$/Foto_singleframeset.py" />
-        <option value="$PROJECT_DIR$/geotag.py" />
+        <option value="$PROJECT_DIR$/NOTE.ipynb" />
+        <option value="$PROJECT_DIR$/scribble.py" />
         <option value="$PROJECT_DIR$/scratchbook.py" />
         <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
       </list>
@@ -89,6 +52,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -96,31 +60,13 @@
               <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
               <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
-              <item name="data process" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
-              <item name="phase 2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
-              <item name="phase 2" type="462c0819:PsiDirectoryNode" />
-              <item name="Foto" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -135,8 +81,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.shp&amp;png_0527">
-    <configuration name="Foto_singleframeset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.scratchbook">
+    <configuration name="RealsensePython" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -144,38 +90,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Foto_singleframeset.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="check" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/check.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
     <configuration name="scratchbook" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -191,6 +112,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratchbook.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scribble" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scribble.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,28 +162,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Nosetests in shp&amp;png_0527.py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/shp\u0026png_0527.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.shp&amp;png_0527" />
-        <item itemvalue="Python tests.Nosetests in shp&amp;png_0527.py" />
         <item itemvalue="Python.scratchbook" />
-        <item itemvalue="Python.Foto_singleframeset" />
-        <item itemvalue="Python.check" />
+        <item itemvalue="Python.scribble" />
+        <item itemvalue="Python.shp&amp;png_0527" />
       </list>
     </recent_temporary>
   </component>
@@ -250,301 +175,104 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9f5de92a-f1c8-423a-a575-f17d51a3b48e" name="Default Changelist" comment="" />
-      <created>1559055962902</created>
+      <changelist id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="" />
+      <created>1559545379321</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1559055962902</updated>
+      <updated>1559545379321</updated>
     </task>
-    <task id="LOCAL-00001" summary="write to a more clear usable">
-      <created>1559114100548</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1559114100548</updated>
-    </task>
-    <task id="LOCAL-00002" summary="mp for list creation">
-      <created>1559122689548</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1559122689548</updated>
-    </task>
-    <task id="LOCAL-00003" summary="change the photos taken, add style">
-      <created>1559125755636</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1559125755636</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add geotagging">
-      <created>1559133828497</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1559133828497</updated>
-    </task>
-    <task id="LOCAL-00005" summary="add geotagging">
-      <created>1559140010684</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1559140010684</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 09h 55m 35s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 09h 56m 58s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 10h 49m 33s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 10h 51m 35s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 10h 52m 57s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 11h 22m 59s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 11h 31m 43s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 14h 33m 29s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 16h 59m 57s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.05.29 at 17h 21m 09s.xml">
-      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
-    </history-entry>
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24815595" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34127843" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="write to a more clear usable" />
-    <MESSAGE value="mp for list creation" />
-    <MESSAGE value="change the photos taken, add style" />
-    <MESSAGE value="add geotagging" />
-    <option name="LAST_COMMIT_MESSAGE" value="add geotagging" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/phase 1/color_to_png.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>6</line>
+          <line>172</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>1</line>
+          <line>273</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>118</line>
+          <line>70</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_keep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/read_bag.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/color_to_png.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="45" column="55" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
-          <folding>
-            <element signature="e#23#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/measure_synced.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="19" selection-start-line="19" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/depth to png.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="42" lean-forward="true" selection-start-line="5" selection-end-line="42" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/measure_loop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1249" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/matchframelist.py">
+    <entry file="file://$PROJECT_DIR$/scribble.py" />
+    <entry file="file://$PROJECT_DIR$/NOTE.ipynb" />
+    <entry file="file://$PROJECT_DIR$/complete.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data process/shp&amp;png_0527.py">
+    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class_measure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="46" column="48" lean-forward="true" selection-start-line="47" selection-end-line="49" selection-end-column="25" />
+        <state relative-caret-position="307">
+          <caret line="271" selection-start-line="271" selection-end-line="271" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/check.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="14" selection-start-line="14" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sss.py" />
-    <entry file="file://$PROJECT_DIR$/kml/Foto.kml" />
-    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#196#858#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/measure_loop_temp_0405.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 1/record_loop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geotag.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="77" column="24" selection-end-line="77" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/phase 2/Foto/Foto.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="26" selection-start-line="26" selection-end-line="30" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#277#793#0" />
+            <element signature="e#832#1028#0" />
+            <element signature="e#1088#2077#0" />
+            <element signature="e#2098#2742#0" />
+            <element signature="e#2775#3215#0" />
+            <element signature="e#3248#3463#0" />
+            <element signature="e#3488#3677#0" />
+            <element signature="e#3712#5368#0" />
+            <element signature="e#5409#6644#0" />
+            <element signature="e#6670#7050#0" />
+            <element signature="e#7080#7992#0" />
+            <element signature="e#8019#8629#0" />
+            <element signature="e#8655#9036#0" />
+            <element signature="e#9061#10376#0" />
+            <element signature="e#10413#11805#0" />
+            <element signature="e#11828#12863#0" />
+            <element signature="e#12897#12950#0" />
+            <element signature="e#12969#13910#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scratchbook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="403" column="12" lean-forward="true" selection-start-line="403" selection-start-column="12" selection-end-line="403" selection-end-column="12" />
-          <folding>
-            <element signature="e#277#793#0" />
-            <element signature="e#832#1028#0" />
-            <element signature="e#1088#2077#0" />
-            <element signature="e#2097#2741#0" />
-            <element signature="e#2774#3214#0" />
-            <element signature="e#3247#3462#0" />
-            <element signature="e#3487#3676#0" />
-            <element signature="e#3711#5215#0" />
-            <element signature="e#5256#6404#0" />
-          </folding>
+        <state relative-caret-position="160">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
         </state>
       </provider>
     </entry>

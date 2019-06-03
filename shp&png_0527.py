@@ -67,16 +67,17 @@ def set_gps_location(file_name, lat, lng, altitude):
     exif_bytes = piexif.dump(exif_dict)
     piexif.insert(exif_bytes, file_name)
 
+
 def geotag():
     global project_dir,t
     fotolog = project_dir + '/shp/matcher.txt'
-    png_dir = project_dir + '/png'
+    jpg_dir = project_dir + '/jpg'
     with open(fotolog, 'r') as log:
         log.readline()
         for y in log:
             data = y.split(',')
             weg_num, frame, Lat, Lon = data[0], data[2], float(data[4]), float(data[5])
-            jpgname = '{}/{}-{}.jpg'.format(png_dir, weg_num, frame)
+            jpgname = '{}/{}-{}.jpg'.format(jpg_dir, weg_num, frame)
             try:
                 set_gps_location(jpgname, Lat, Lon, 0)
             except IOError:
@@ -88,7 +89,7 @@ def geotag():
     t.insert(END, 'geotagging fertig\n')
 
 
-def test_bag(input_file):
+def examine_bag(input_file):
     try:
         pipeline = rs.pipeline()
         config = rs.config()
@@ -106,7 +107,7 @@ def test_bag(input_file):
 
 
 def dir_generate(in_dir):
-    """test if this folder exist, if not, create one"""
+    """exmaine if this folder exist, if not, create one"""
     in_dir = str(in_dir)
     if not os.path.exists(in_dir):
         try:
@@ -131,6 +132,9 @@ def frame_list(input_file):
     input_num = os.path.basename(input_file)[:-4]
     project_dir = os.path.dirname(os.path.dirname(input_file))
     list_dir = dir_generate(project_dir + '/list')
+
+    if os.path.isfile('{}/{}_color.txt'.format(list_dir, input_num)) and os.path.isfile('{}/{}_depth.txt'.format(list_dir, input_num)):
+        return
 
     c_fold = open('{}/{}_color.txt'.format(list_dir, input_num), 'w')
     d_fold = open('{}/{}_depth.txt'.format(list_dir, input_num), 'w')
@@ -193,6 +197,8 @@ def match_frame_list(input_file):
             unique_list.append(elem)
 
     i = 1
+    if os.path.isfile('{}/{}_matched.txt'.format(list_dir, input_num)):
+        return
     with open('{}/{}_matched.txt'.format(list_dir, input_num), 'w') as matched:
         for x in unique_list:
             x = '{},{}'.format(i, x)
@@ -209,7 +215,7 @@ def create_list():
 
     x_list = ['{}/{}'.format(bag_dir,x) for x in os.listdir(bag_dir) ]
     pool = mp.Pool()
-    pool.map(test_bag,x_list)
+    pool.map(examine_bag, x_list)
     pool.map(frame_list, x_list)
     pool.map(match_frame_list, x_list)
 
@@ -234,11 +240,11 @@ def pair(num,tet,ans):
             Lon = lines_l[3]
             Lat = lines_l[4]
             Time = lines_l[8]
-            png = '{}/png/{}-{}.png'.format(project_dir, num, color_m)
+            jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, color_m)
 
             ans = abs(int(color_l) - int(color_m))
             if ans < 5:
-                info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, png)
+                info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, jpg)
                 tet.write(info)
 
     print num + ' done'
@@ -253,7 +259,7 @@ def pair_list(ans):
     shp_dir = dir_generate(project_dir + '/shp')
 
     tet = open(shp_dir + '/matcher.txt', 'w')
-    tet.write('weg_num,foto_id,Color,Depth,Lat,Lon,Uhrzeit,png_path\n')
+    tet.write('weg_num,foto_id,Color,Depth,Lat,Lon,Uhrzeit,jpg_path\n')
 
     for log in os.listdir(foto_log):
         num = log.split('.')[0]
@@ -263,7 +269,6 @@ def pair_list(ans):
             print 'no file {}'.format(num)
         finally:
             print 'pair list done'
-
 
 
 def matchershp():
@@ -284,7 +289,7 @@ def Fotopunkte():
     shp_dir = dir_generate(project_dir + '/shp')
     fotolog = project_dir + '/foto_log'
     foto_shp = open(project_dir + '/shp/Fotopunkte.txt', 'w')
-    foto_shp.write('weg_num,foto_id,Color,Depth,Lon,Lat,png_path,Uhrzeit\n')
+    foto_shp.write('weg_num,foto_id,Color,Depth,Lon,Lat,jpg_path,Uhrzeit\n')
     for x in os.listdir(fotolog):
         file_name = '{}/{}'.format(fotolog, x)
         with open(file_name, 'r') as log:
@@ -292,7 +297,7 @@ def Fotopunkte():
                 data = data.split(',')
                 foto_id, Color, Depth, Long, Lat, time = data[0], data[1], data[2], data[4], data[3], data[8]
                 weg_nummer = x[:-4]
-                path = '{}/png/{}-{}.png'.format(project_dir, weg_nummer, Color)
+                path = '{}/jpg/{}-{}.jpg'.format(project_dir, weg_nummer, Color)
                 shp_line = '{},{},{},{},{},{},{},{}'.format(weg_nummer, foto_id, Color, Depth, Long, Lat, path, time)
                 foto_shp.write(shp_line)
         t.insert(END, 'processed {}\n'.format(x))
@@ -304,8 +309,8 @@ def Fotopunkte():
     t.insert(END, 'Fotopunkte.shp fertig\n')
 
 
-def color_to_png(input_file):
-    """create png with the input file in the folder png"""
+def color_to_jpg(input_file):
+    """create jpg with the input file in the folder jpg"""
     print input_file
     bagname = os.path.basename(input_file)
     bagdir = os.path.dirname(input_file)
@@ -328,15 +333,15 @@ def color_to_png(input_file):
             var = rs.frame.get_frame_number(color_frame)
             color_image = np.asanyarray(color_frame.get_data())
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
-            png_name = '{}/png/{}-{}.jpg'.format(projectdir, bagname[:-4], var)
-            # print png_name
-            exist = os.path.isfile(png_name)
+            jpg_name = '{}/jpg/{}-{}.jpg'.format(projectdir, bagname[:-4], var)
+            # print jpg_name
+            exist = os.path.isfile(jpg_name)
             if exist:
-                # print 'png exist'
+                # print 'jpg exist'
                 pass
             else:
-                print 'compressing {}'.format(png_name)
-                cv2.imwrite((png_name), color_cvt, [cv2.IMWRITE_PNG_COMPRESSION, 1])
+                print 'compressing {}'.format(jpg_name)
+                cv2.imwrite((jpg_name), color_cvt, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     except RuntimeError:
         print 'frame covert finished for ' + input_file
@@ -345,19 +350,19 @@ def color_to_png(input_file):
         pass
 
 
-def test_png():
-    """Loop through all the bag files until all pngs were created
+def generate_jpg():
+    """Loop through all the bag files until all jpgs were created
     if theres unreadable bag file it will keep on looping"""
     global project_dir,t
-    png_dir = dir_generate(project_dir + '/png')
+    jpg_dir = dir_generate(project_dir + '/jpg')
     try:
         while True:
-            png_list = set([x.split('-')[0] for x in os.listdir(png_dir)])
+            jpg_list = set([x.split('-')[0] for x in os.listdir(jpg_dir)])
             untransformed_list = []
-            print png_list
+            #print jpg_list
             for bag in os.listdir(project_dir + '/bag'):
-                if bag[:-4] in png_list:
-                    # print 'png for {} existed'.format(bag)
+                if bag[:-4] in jpg_list:
+                    # print 'jpg for {} existed'.format(bag)
                     pass
                 else:
                     bag_full_path = '{}/bag/{}'.format(project_dir, bag)
@@ -370,10 +375,10 @@ def test_png():
                 print x
 
             pool = mp.Pool()
-            pool.map(color_to_png, untransformed_list)
+            pool.map(color_to_jpg, untransformed_list)
     finally:
-        print 'png fertig'
-        t.insert(END, 'PNG fertig\n')
+        print 'jpg fertig'
+        t.insert(END, 'JPG fertig\n')
 
 
 def from_bag_to_list(ans):
@@ -384,7 +389,7 @@ def from_bag_to_list(ans):
 
 def main():
     """TKinter for data process"""
-    global t, project_dir
+    global t
     root = Tk()
     root.title('shapefile generator')
     root.geometry('500x300')
@@ -392,7 +397,8 @@ def main():
     frame.pack()
     var = StringVar()
     l = Label(frame, textvariable=var, bg='white', bd=5, width=40)
-    b = Button(frame, text='select folder', height=2, command=lambda: get_dir(var))
+    ans = lambda: get_dir(var)
+    b = Button(frame, text='select folder', height=2, command= ans)
     b.pack()
     l.pack()
     frame_2 = Frame(root, height=20, bd=5)
@@ -404,9 +410,8 @@ def main():
 
     Button(frame_2, text='generage list', command=lambda: create_list()).grid(row=1, column=1)
     Button(frame_2, text='generage shp', command=lambda: from_bag_to_list(project_dir)).grid(row=1, column=2)
-    Button(frame_2, text='generate jpg', command=lambda: test_png()).grid(row=1, column=3)
+    Button(frame_2, text='generate jpg', command=lambda: generate_jpg()).grid(row=1, column=3)
     Button(frame_2, text='geotag', command=geotag).grid(row=1, column=4)
-
 
     root.mainloop()
 
