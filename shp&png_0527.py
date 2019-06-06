@@ -10,6 +10,7 @@ import multiprocessing as mp
 import os
 import piexif
 from fractions import Fraction
+from itertools import islice
 
 def to_deg(value, loc):
     """convert decimal coordinates into degrees, munutes and seconds tuple
@@ -355,18 +356,22 @@ def generate_jpg():
     if theres unreadable bag file it will keep on looping"""
     global project_dir,t
     jpg_dir = dir_generate(project_dir + '/jpg')
+    match_list = project_dir +'/shp/matcher.txt'
+
     try:
         while True:
-            jpg_list = set([x.split('-')[0] for x in os.listdir(jpg_dir)])
             untransformed_list = []
-            #print jpg_list
-            for bag in os.listdir(project_dir + '/bag'):
-                if bag[:-4] in jpg_list:
-                    # print 'jpg for {} existed'.format(bag)
-                    pass
-                else:
-                    bag_full_path = '{}/bag/{}'.format(project_dir, bag)
-                    untransformed_list.append(bag_full_path)
+            with open(match_list, 'r') as allpoints:
+                allpoints.next()
+                for x in allpoints:
+                    data = x.strip().split(',')
+                    weg_num = data[0]
+                    frame_num = data[2]
+                    jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, weg_num, frame_num)
+                    exist = os.path.isfile(jpg)
+                    if not exist:
+                        bag = '{}/bag/{}.bag'.format(project_dir, weg_num)
+                        untransformed_list.append(bag)
             if untransformed_list == []:
                 print 'all transformed'
                 break

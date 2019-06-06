@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Foto_singleframeset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Foto_singleframeset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratchbook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shp&amp;png_0527.py" beforeDir="false" afterPath="$PROJECT_DIR$/shp&amp;png_0527.py" afterDir="false" />
     </list>
@@ -13,7 +14,44 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6840">
+              <caret line="353" column="19" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
+              <folding>
+                <element signature="e#24#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1422">
+              <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scratchbook.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1000">
+              <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,23 +74,23 @@
       <list>
         <option value="$PROJECT_DIR$/NOTE.ipynb" />
         <option value="$PROJECT_DIR$/scribble.py" />
-        <option value="$PROJECT_DIR$/scratchbook.py" />
         <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
+        <option value="$PROJECT_DIR$/scratchbook.py" />
+        <option value="$PROJECT_DIR$/Foto_singleframeset.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="1939" />
-    <option name="height" value="1049" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -64,6 +102,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -165,8 +204,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.scratchbook" />
-        <item itemvalue="Python.scribble" />
         <item itemvalue="Python.shp&amp;png_0527" />
+        <item itemvalue="Python.scribble" />
       </list>
     </recent_temporary>
   </component>
@@ -181,12 +220,21 @@
       <option name="presentableId" value="Default" />
       <updated>1559545379321</updated>
     </task>
+    <task id="LOCAL-00001" summary="change png output to jpg">
+      <created>1559572427369</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559572427369</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24868283" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -205,32 +253,16 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change png output to jpg" />
+    <option name="LAST_COMMIT_MESSAGE" value="change png output to jpg" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>172</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>273</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -244,35 +276,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="271" selection-start-line="271" selection-end-line="271" />
+        <state relative-caret-position="6840">
+          <caret line="353" column="19" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
           <folding>
-            <element signature="e#277#793#0" />
-            <element signature="e#832#1028#0" />
-            <element signature="e#1088#2077#0" />
-            <element signature="e#2098#2742#0" />
-            <element signature="e#2775#3215#0" />
-            <element signature="e#3248#3463#0" />
-            <element signature="e#3488#3677#0" />
-            <element signature="e#3712#5368#0" />
-            <element signature="e#5409#6644#0" />
-            <element signature="e#6670#7050#0" />
-            <element signature="e#7080#7992#0" />
-            <element signature="e#8019#8629#0" />
-            <element signature="e#8655#9036#0" />
-            <element signature="e#9061#10376#0" />
-            <element signature="e#10413#11805#0" />
-            <element signature="e#11828#12863#0" />
-            <element signature="e#12897#12950#0" />
-            <element signature="e#12969#13910#0" />
+            <element signature="e#24#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scratchbook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="1000">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1422">
+          <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

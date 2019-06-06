@@ -271,7 +271,6 @@ def Camera(file_name):
 
             if Pause is False:
                 if key == 32 or gps_dis(current_location,foto_location) > 15:
-                    start = time.time()
                     recorder.resume()
                     time.sleep(0.05)
                     frames = pipeline.wait_for_frames()
@@ -284,8 +283,6 @@ def Camera(file_name):
                     recorder.pause()
                     logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
                     fotolog.write(logmsg)
-                    end = time.time()
-                    print end - start
                     write_kml(lon,lat)
                     i += 1
                     continue
@@ -350,7 +347,7 @@ def camera_loop():
 
     try:
         while gps_on is True:
-            file_name = '{:02d}{}_{:03d}'.format(now.month, now.day, num)
+            file_name = '{:02d}{:02d}_{:03d}'.format(now.month, now.day, num)
             bag_name = './bag/{}.bag'.format(file_name)
             exist = os.path.isfile(bag_name)
             if exist:
