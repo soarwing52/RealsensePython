@@ -7,7 +7,7 @@ from itertools import islice
 
 def color_to_jpg(input_file):
     """create jpg with the input file in the folder jpg"""
-    print input_file
+    #print input_file
     bagname = os.path.basename(input_file)
     bagdir = os.path.dirname(input_file)
     projectdir = os.path.dirname(bagdir)
@@ -43,23 +43,28 @@ def color_to_jpg(input_file):
         print 'frame covert finished for ' + input_file
         cv2.destroyAllWindows()
     finally:
-        pass
+        pipeline.stop()
 
+def dir_generate(in_dir):
+    """exmaine if this folder exist, if not, create one"""
+    in_dir = str(in_dir)
+    if not os.path.exists(in_dir):
+        try:
+            os.makedirs(in_dir, 0o700)
+        finally:
+            pass
+    return in_dir
 
 def main():
-    jpglist = [jpg for jpg in os.listdir(r'C:\Users\cyh\Desktop\copy/jpg')]
-    with open(r'C:\Users\cyh\Desktop\copy\shp/matcher.txt','r')as matcher:
-        matcher.next()
-        for bags in islice(matcher,1,None):
-            data = bags.strip().split(',')
-            weg_num = data[0]
-            frame_num = data[2]
-            jpg = '{}-{}.jpg'.format(weg_num, frame_num)
-            if jpg in jpglist:
-                jpglist.remove(jpg)
+    foldername = '0617'
+    bag_dir = r'X:\Mittelweser\{}\bag'.format(foldername)
+    foto_dir = dir_generate(r'X:\Mittelweser\{}\jpg'.format(foldername))
 
-    print jpglist
 
+    x =[os.path.join(bag_dir,bag)for bag in os.listdir(bag_dir)]
+    pool = mp.Pool()
+    pool.map(color_to_jpg,x)
+    print 'done'
 
 if __name__ == '__main__':
     main()

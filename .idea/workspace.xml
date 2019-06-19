@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foto_singleframeset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Foto_singleframeset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data process/shp&amp;png_0527.py" beforeDir="false" afterPath="$PROJECT_DIR$/data process/shp&amp;png_0527.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratchbook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shp&amp;png_0527.py" beforeDir="false" afterPath="$PROJECT_DIR$/shp&amp;png_0527.py" afterDir="false" />
     </list>
@@ -15,25 +15,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6840">
-              <caret line="353" column="19" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
+            <state relative-caret-position="20">
+              <caret line="115" selection-start-line="115" selection-end-line="115" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1422">
-              <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scratchbook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+            <state relative-caret-position="1140">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -63,7 +51,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>61</find>
       <find>test</find>
+      <find>match</find>
+      <find>match_fr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -74,9 +65,10 @@
       <list>
         <option value="$PROJECT_DIR$/NOTE.ipynb" />
         <option value="$PROJECT_DIR$/scribble.py" />
-        <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
-        <option value="$PROJECT_DIR$/scratchbook.py" />
         <option value="$PROJECT_DIR$/Foto_singleframeset.py" />
+        <option value="$PROJECT_DIR$/data process/shp&amp;png_0527.py" />
+        <option value="$PROJECT_DIR$/scratchbook.py" />
+        <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
       </list>
     </option>
   </component>
@@ -97,6 +89,11 @@
             <path>
               <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
               <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+              <item name="data process" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -120,7 +117,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.scratchbook">
+  <component name="RunManager" selected="Python.shp&amp;png_0527">
     <configuration name="RealsensePython" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +177,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="shp&amp;png_0527 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data process" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data process/shp&amp;png_0527.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="shp&amp;png_0527" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,10 +219,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Nosetests in shp&amp;png_0527.py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data process" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_regexPattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/data process/shp\u0026png_0527.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scratchbook" />
         <item itemvalue="Python.shp&amp;png_0527" />
+        <item itemvalue="Python.scratchbook" />
+        <item itemvalue="Python.shp&amp;png_0527 (1)" />
+        <item itemvalue="Python tests.Nosetests in shp&amp;png_0527.py" />
         <item itemvalue="Python.scribble" />
       </list>
     </recent_temporary>
@@ -227,19 +262,31 @@
       <option name="project" value="LOCAL" />
       <updated>1559572427369</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update Foto">
+      <created>1559803395463</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1559803395464</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Nosetests_in_shp&amp;png_0527_py - 2019.06.14 at 08h 36m 48s.xml">
+      <configuration name="Nosetests in shp&amp;png_0527.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24868283" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24815595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -255,14 +302,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change png output to jpg" />
-    <option name="LAST_COMMIT_MESSAGE" value="change png output to jpg" />
+    <MESSAGE value="update Foto" />
+    <option name="LAST_COMMIT_MESSAGE" value="update Foto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/shp&amp;png_0527.py</url>
-          <line>14</line>
+          <line>13</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -274,10 +322,30 @@
     <entry file="file://$PROJECT_DIR$/complete.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data process/shp&amp;png_0527.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="264" column="8" lean-forward="true" selection-start-line="264" selection-start-column="8" selection-end-line="264" selection-end-column="8" />
+          <folding>
+            <element signature="e#25#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6840">
-          <caret line="353" column="19" selection-start-line="353" selection-start-column="19" selection-end-line="353" selection-end-column="19" />
+        <state relative-caret-position="20">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
           </folding>
@@ -286,18 +354,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scratchbook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1422">
-          <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
+        <state relative-caret-position="1140">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>

@@ -188,10 +188,10 @@ def matchershp(t):
     t.insert(END, 'Fotopunkte.shp fertig\n')
 
 
-def Fotopunkte(t):
+def Fotopunkte(project_dir):
     """create Fotopunkte.txt and shp from all fotologs, the lost frames and the small latency caused frame number not
     match can't be detected """
-    global project_dir
+
     shp_dir = dir_generate(project_dir + '/shp')
     fotolog = project_dir + '/foto_log'
     foto_shp = open(project_dir + '/shp/Fotopunkte.txt', 'w')
@@ -203,16 +203,17 @@ def Fotopunkte(t):
                 data = data.split(',')
                 foto_id, Color, Depth, Long, Lat, time = data[0], data[1], data[2], data[4], data[3], data[8]
                 weg_nummer = x[:-4]
-                path = '{}/png/{}-{}.png'.format(project_dir, weg_nummer, Color)
+                path = '{}/jpg/{}-{}.jpg'.format(project_dir, weg_nummer, Color)
                 shp_line = '{},{},{},{},{},{},{},{}'.format(weg_nummer, foto_id, Color, Depth, Long, Lat, path, time)
                 foto_shp.write(shp_line)
-        t.insert(END, 'processed {}\n'.format(x))
+        print 'processed {}\n'.format(x)
+        #t.insert(END, 'processed {}\n'.format(x))
     foto_shp.close()
     arcpy.env.overwriteOutput = True
     spRef = 'WGS 1984'
     management.MakeXYEventLayer(shp_dir + '/Fotopunkte.txt', 'Lat', 'Lon', 'Fotopunkte', spRef)
     arcpy.FeatureClassToShapefile_conversion('Fotopunkte', shp_dir)
-    t.insert(END, 'Fotopunkte.shp fertig\n')
+    #t.insert(END, 'Fotopunkte.shp fertig\n')
 
 
 def color_to_png(input_file):
@@ -256,7 +257,7 @@ def color_to_png(input_file):
         pass
 
 
-def test_png(t):
+def run_png(t):
     """Loop through all the bag files until all pngs were created
     if theres unreadable bag file it will keep on looping"""
     global project_dir
@@ -309,11 +310,12 @@ def main():
     Button(frame_2, text='1.list frames', command=lambda: create_list(t)).grid(row=1, column=1)
     Button(frame_2, text='2.match GPS', command=lambda: pair_list(t)).grid(row=1, column=2)
     Button(frame_2, text='3.generate shp', command=lambda: matchershp(t)).grid(row=1, column=3)
-    Button(frame_2, text='generate png', command=lambda: test_png(t)).grid(row=1, column=4)
+    Button(frame_2, text='generate png', command=lambda: run_png(t)).grid(row=1, column=4)
     Button(frame_2, text='generate Foto shp', command=lambda: Fotopunkte(t)).grid(row=1, column=5)
 
     root.mainloop()
 
 
 if __name__ == '__main__':
-    main()
+    project_dir = r'X:\Mittelweser\0613'
+    Fotopunkte(project_dir)

@@ -10,7 +10,6 @@ import multiprocessing as mp
 import os
 import piexif
 from fractions import Fraction
-from itertools import islice
 
 def to_deg(value, loc):
     """convert decimal coordinates into degrees, munutes and seconds tuple
@@ -71,6 +70,7 @@ def set_gps_location(file_name, lat, lng, altitude):
 
 def geotag():
     global project_dir,t
+    print 'start geotag'
     fotolog = project_dir + '/shp/matcher.txt'
     jpg_dir = project_dir + '/jpg'
     with open(fotolog, 'r') as log:
@@ -113,6 +113,7 @@ def dir_generate(in_dir):
     if not os.path.exists(in_dir):
         try:
             os.makedirs(in_dir, 0o700)
+
         finally:
             pass
     return in_dir
@@ -135,6 +136,7 @@ def frame_list(input_file):
     list_dir = dir_generate(project_dir + '/list')
 
     if os.path.isfile('{}/{}_color.txt'.format(list_dir, input_num)) and os.path.isfile('{}/{}_depth.txt'.format(list_dir, input_num)):
+        print 'list {} already exist'.format(input_num)
         return
 
     c_fold = open('{}/{}_color.txt'.format(list_dir, input_num), 'w')
@@ -413,8 +415,8 @@ def main():
     t = Text(frame_b, width=40, height=10)
     t.pack()
 
-    Button(frame_2, text='generage list', command=lambda: create_list()).grid(row=1, column=1)
-    Button(frame_2, text='generage shp', command=lambda: from_bag_to_list(project_dir)).grid(row=1, column=2)
+    Button(frame_2, text='generate list', command=lambda: create_list()).grid(row=1, column=1)
+    Button(frame_2, text='generate shp', command=lambda: from_bag_to_list(project_dir)).grid(row=1, column=2)
     Button(frame_2, text='generate jpg', command=lambda: generate_jpg()).grid(row=1, column=3)
     Button(frame_2, text='geotag', command=geotag).grid(row=1, column=4)
 
