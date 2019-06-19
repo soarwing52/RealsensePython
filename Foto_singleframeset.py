@@ -267,10 +267,10 @@ def Camera(file_name):
             color_frame = frames.get_color_frame()
             if not depth_frame or not color_frame:
                 continue
-            key = cv2.waitKey(1)
+            key = cv2.waitKeyEx(1)
 
             if Pause is False:
-                if key == 32 or gps_dis(current_location,foto_location) > 15:
+                if key == 32 or gps_dis(current_location,foto_location) > 15 or key == 98:
                     recorder.resume()
                     time.sleep(0.05)
                     frames = pipeline.wait_for_frames()
@@ -296,7 +296,7 @@ def Camera(file_name):
                 camera_repeat = False
                 print('Camera finish\n')
                 break
-            elif key == 114:
+            elif key == 114 or key == 2228224:
                 cv2.destroyAllWindows()
                 camera_on = False
                 camera_repeat = True
@@ -306,7 +306,7 @@ def Camera(file_name):
                 cv2.destroyAllWindows()
                 camera_repeat = False
                 break
-            elif cv2.waitKey(1) & 0xFF == ord('p'):
+            elif cv2.waitKey(1) & 0xFF == ord('p') or key == 2162688:
                 if Pause is False:
                     print 'pause pressed'
                     Pause = True
