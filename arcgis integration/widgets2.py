@@ -1980,8 +1980,8 @@ class Ruler(AxesWidget):
         if self.angle_unit == 'degree':
             angle2 = angle * 180 / np.pi
             angle4 = "%.2f" % angle2
-            print(angle2)
-            print(angle4)
+            #print(angle2)
+            #print(angle4)
             return angle4
         else:
             return angle

@@ -17,7 +17,7 @@ def min2decimal(in_data):
 def GPS():
     print('GPS start')
     serialPort = serial.Serial()
-    serialPort.port = 'COM7'
+    serialPort.port = 'COM8'
     serialPort.baudrate = 4800
     serialPort.bytesize = serial.EIGHTBITS
     serialPort.parity = serial.PARITY_NONE

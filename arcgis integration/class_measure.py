@@ -19,6 +19,7 @@ class Arc_Real:
             pipeline = rs.pipeline()
             config = rs.config()
             config.enable_device_from_file(self.file_name)
+            config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
             profile = pipeline.start(config)
             device = profile.get_device()
             playback = device.as_playback()
@@ -42,7 +43,7 @@ class Arc_Real:
                 cv2.putText(color_cvt, str(c_frame_num), bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
                 cv2.namedWindow("Color Stream", cv2.WINDOW_FULLSCREEN)
                 cv2.imshow("Color Stream", color_cvt)
-                key = cv2.waitKey(500)
+                key = cv2.waitKey(1000)
                 # if pressed escape exit program
                 if key & 0xFF == ord('q') or key == 27:
                     cv2.destroyAllWindows()
@@ -53,6 +54,7 @@ class Arc_Real:
 
         finally:
             print 'finish'
+            os._exit(0)
             pipeline.stop()
 
     def measure(self,frame_id):
@@ -70,7 +72,7 @@ class Arc_Real:
         align = rs.align(align_to)
         frame_list = []
 
-        with open('{}\\foto_log\\fotolog_{}.txt'.format(self.Pro_Dir, self.weg_id), 'r') as csvfile:
+        with open('{}\\foto_log\\{}.txt'.format(self.Pro_Dir, self.weg_id), 'r') as csvfile:
             for line in csvfile:
                 frame = [elt.strip() for elt in line.split(',')]
                 frame_list.append(frame)
@@ -88,7 +90,7 @@ class Arc_Real:
                     continue
                 depth_color_frame = rs.colorizer().colorize(depth_frame)
                 vard = rs.frame.get_frame_number(depth_frame)
-                if int(vard) == int(frame_list[i][2]):
+                if abs(int(vard) - int(frame_list[i][2]))<5:
                     print 'match depth{}'.format(vard)
                     try:
                         while True:
@@ -98,7 +100,7 @@ class Arc_Real:
                             if not color_frame:
                                 continue
                             var = rs.frame.get_frame_number(color_frame)
-                            if int(var) == int(frame_list[i][1]):
+                            if abs(int(var) - int(frame_list[i][1]))<5:
                                 print 'match color{}'.format(var)
                                 color_image = np.asanyarray(color_frame.get_data())
                                 color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
@@ -135,7 +137,6 @@ class Arc_Real:
                                     global i
                                     if event.key == 'q':
                                         i = 800
-                                        print i
                                         plt.close(event.canvas.figure)
                                         return i
                                     elif event.key == 'left':
@@ -157,28 +158,29 @@ class Arc_Real:
                                     i = 800
                                 break
                             else:
-                                print 'searching for: {}, now:{}'.format(frame_list[i][1], var)
+                                print 'searching for RGB image: {}, now:{}'.format(frame_list[i][1], var)
 
                     finally:
                         pass
                 elif i == 800:
                     break
                 else:
-                    print 'searching for: {}, now:{}'.format(frame_list[i][2], vard)
+                    print 'searching for Depth image: {}, now:{}'.format(frame_list[i][2], vard)
                     pass
 
         except IndexError:
             print 'file ended'
         finally:
             print 'return'
+            os._exit(0)
             pipeline.stop()
             return
 
 
 def main():
-    a = Arc_Real('X:/Loehne/png/1-2017.png','1')
-    a.video()
-    #a.measure('5')
+    a = Arc_Real(r'C:\Users\cyh\Desktop\mittel\png\0513_1.png','0513_1')
+    #a.video()
+    a.measure('5')
     print a
 
 if __name__ == '__main__':
