@@ -37,9 +37,23 @@ A step by step series of examples that tell you how to get a development env run
 After installed, copy widgets2 into Lib/matplotlib
 and copy def_measure to C:\Users\yourusername\AppData\Roaming\Python\Python27\site-packages
 
-```
 
-```
+
+### Data Capture
+
+the data capture script will automatically generate three folders: bag, foto_log, and kml
+
+it will put the recorded bag in bag format, 
+
+information of index,color frame number, depth frame number, longtitude, lattitude, day, month, year, timewill be saved in txt format in foto_log
+
+kml will generate live location as live, and the location with recorded places in Foto.kml
+use Google Earth: Temporary Places/Add/Networklink link to folder/kml/ live for location Foto.kml for foto point
+
+![](examples/google earth.PNG)
+
+
+### in ArcGIS
 
 in Arcgis use hyperlink and show script
 put in 
