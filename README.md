@@ -50,7 +50,7 @@ information of index,color frame number, depth frame number, longtitude, lattitu
 kml will generate live location as live, and the location with recorded places in Foto.kml
 use Google Earth: Temporary Places/Add/Networklink link to folder/kml/ live for location Foto.kml for foto point
 
-![](examples/google earth.PNG)
+![](examples/google earth.png)
 
 
 ### in ArcGIS
