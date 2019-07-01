@@ -26,6 +26,7 @@ class Arc_Real:
             playback.set_real_time(False)
 
             while True:
+                pause = False
                 frames = pipeline.wait_for_frames()
                 color_frame = frames.get_color_frame()
                 if not color_frame:
@@ -44,10 +45,20 @@ class Arc_Real:
                 cv2.namedWindow("Color Stream", cv2.WINDOW_FULLSCREEN)
                 cv2.imshow("Color Stream", color_cvt)
                 key = cv2.waitKey(1000)
+
                 # if pressed escape exit program
                 if key & 0xFF == ord('q') or key == 27:
                     cv2.destroyAllWindows()
                     break
+                elif cv2.getWindowProperty('Color Stream', cv2.WND_PROP_VISIBLE) < 1:
+                    cv2.destroyAllWindows()
+                    break
+                elif key == 112:
+                    if pause is False:
+                        print 'pause'
+                        pause = True
+                        key = cv2.waitKey(0)
+
         except RuntimeError:
             print 'file ended'
             cv2.destroyAllWindows()

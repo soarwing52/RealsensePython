@@ -3,329 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DSCN9122.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Foto_singleframeset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/Foto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/Measure.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/Video.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/class_measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/multithreadphoto - oneframe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/shp&amp;png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/texttkmp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/videoclass.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OOP_scripts/widgets2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/Foto.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/Foto.py" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis integration/Foto.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/Measure.hlk" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis integration/Measure.hlk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/arcgis integration/class_measure.py" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis integration/class_measure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/def_measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/multithreadphoto - oneframe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/preparation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/shp&amp;png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/video.hlk" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis integration/video.hlk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/widgets2.py" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis integration/widgets2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/complete.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data capture/Foto_singleframeset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data capture/live_gps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data capture/multithreadphoto - oneframe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data process/shp&amp;png_0527.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/def_measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/manual_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/measure_loop_temp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/measure_search.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/measure_with_mpl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/read_bag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/record_loop.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/save-translate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/scratchbook.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/to_frame_script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drafts/widgets2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/excel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geotag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opencv_key.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/Hello World.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/Ruler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/color_to_png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/depth to png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/depth_to_png.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/matchframelist.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_loop.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_loop_temp_0405.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_read_per_frame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_stream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_synced.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/measure_with_mpl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/read_bag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 1/record_loop.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/Foto/Foto semi-automatisch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/Foto/Foto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/1_colorlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/1_depthlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/1_matched.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/2_colorlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/2_depthlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/2_matched.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/3_colorlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/3_depthlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/3_matched.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/speed1_colorlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/speed1_depthlist.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/list/speed1_matched.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/materials/color match list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/materials/depth match list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/materials/measure_synced.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/materials/poll for frames.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/measure_overlap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/measure_search.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1072.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1179.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1229.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1275.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_1802.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_2101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_232.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_2401.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_2701.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_3001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_3301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_3601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_3901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_4201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_4501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_4781.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_4801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_4813.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_5101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_538.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_539.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_540.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_5401.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_610.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_745.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/1_c_901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1086.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1181.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1198.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1218.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1252.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1325.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1391.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1548.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_169.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_1801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_203.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2030.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2066.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2089.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2231.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2276.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2293.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2315.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2353.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2401.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2452.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_250.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2586.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2701.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_2917.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3073.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3229.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3277.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3307.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3346.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3404.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_345.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3452.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3497.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_3601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_454.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_514.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_705.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/2_c_962.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1026.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1152.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1211.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1243.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1484.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1562.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1620.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1644.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1668.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1703.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1720.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1739.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1759.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1775.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1790.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1815.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1835.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1856.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1875.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1890.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1906.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1922.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1938.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1955.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_1973.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_2013.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_274.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_306.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_333.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_389.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_427.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_449.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_485.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_506.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_529.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_548.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_571.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_597.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_622.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_643.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_667.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_702.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_732.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_756.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_772.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_788.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_815.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_829.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_843.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_856.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_870.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_887.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_94.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_969.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/3_c_984.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1012.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1095.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1128.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1153.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1464.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1483.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1553.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1572.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1603.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1625.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1662.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1674.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1712.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1732.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1775.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1809.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1830.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1843.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1862.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1877.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1898.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1922.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1941.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_1998.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2020.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2037.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2049.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2084.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2117.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2125.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2144.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2162.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2190.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2207.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2313.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2401.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2597.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2701.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_273.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2784.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2796.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2822.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2851.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2907.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2928.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2950.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2974.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_2997.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3018.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3038.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3067.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3085.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3124.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3140.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3169.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3301.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3304.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3324.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3435.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3544.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3581.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3601.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3715.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3822.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3964.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_3989.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4180.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4201.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4427.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4501.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_476.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_4801.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_598.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_699.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_734.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_768.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_832.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_871.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_889.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_901.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_920.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png/speed1_c_977.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/png_list_prepare.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/read - repeat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/read.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/video - repeat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/phase 2/bag read/video.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/png_list_prepare.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shp&amp;png_0527.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_keep.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/to png.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photo_capture.py" beforeDir="false" afterPath="$PROJECT_DIR$/photo_capture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratchbook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/separate functions/opencv_find_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/separate functions/opencv_find_key.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -335,30 +16,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_process.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/arcgis integration/scratch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="352" column="23" selection-start-line="352" selection-start-column="23" selection-end-line="352" selection-end-column="23" />
+            <state relative-caret-position="60">
+              <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/arcgis integration/class_measure.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
-                <element signature="e#277#793#0" />
-                <element signature="e#832#1028#0" />
-                <element signature="e#1088#2077#0" />
-                <element signature="e#2098#2767#0" />
-                <element signature="e#2803#3243#0" />
-                <element signature="e#3276#3495#0" />
-                <element signature="e#3520#3709#0" />
-                <element signature="e#3744#5456#0" />
-                <element signature="e#5497#6732#0" />
-                <element signature="e#6758#7142#0" />
-                <element signature="e#7172#8084#0" />
-                <element signature="e#8111#8721#0" />
-                <element signature="e#8746#9127#0" />
-                <element signature="e#9152#10467#0" />
-                <element signature="e#10504#11907#0" />
-                <element signature="e#11923#13111#0" />
-                <element signature="e#13145#13198#0" />
-                <element signature="e#13217#14162#0" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -380,6 +53,7 @@
       <find>test</find>
       <find>match</find>
       <find>match_fr</find>
+      <find>single_fr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -392,19 +66,24 @@
         <option value="$PROJECT_DIR$/scribble.py" />
         <option value="$PROJECT_DIR$/Foto_singleframeset.py" />
         <option value="$PROJECT_DIR$/data process/shp&amp;png_0527.py" />
-        <option value="$PROJECT_DIR$/scratchbook.py" />
         <option value="$PROJECT_DIR$/shp&amp;png_0527.py" />
         <option value="$USER_HOME$/Desktop/New folder/Foto_singleframeset.py" />
         <option value="$PROJECT_DIR$/opencv_key.py" />
         <option value="$PROJECT_DIR$/data_process.py" />
+        <option value="$PROJECT_DIR$/photo_capture.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+        <option value="$PROJECT_DIR$/scratchbook.py" />
+        <option value="$PROJECT_DIR$/arcgis integration/scratch.py" />
+        <option value="$PROJECT_DIR$/separate functions/opencv_find_key.py" />
+        <option value="$PROJECT_DIR$/arcgis integration/class_measure.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="1" />
+    <option name="width" value="1932" />
+    <option name="height" value="1037" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -418,6 +97,27 @@
               <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
               <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+              <item name="arcgis integration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+              <item name="separate functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RealsensePython" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RealsensePython" type="462c0819:PsiDirectoryNode" />
+              <item name="separate functions" type="462c0819:PsiDirectoryNode" />
+              <item name="phase 1" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -426,6 +126,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -440,7 +141,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.opencv_key">
+  <component name="RunManager" selected="Python.scratch">
     <configuration name="RealsensePython" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -458,7 +159,7 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
-    <configuration name="opencv_key" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data_process" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -470,7 +171,70 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/opencv_key.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_process.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="opencv_find_key" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/separate functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/separate functions/opencv_find_key.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="photo_capture" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/photo_capture.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/arcgis integration" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/arcgis integration/scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -500,70 +264,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="shp&amp;png_0527 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data process" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data process/shp&amp;png_0527.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="shp&amp;png_0527" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shp&amp;png_0527.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Nosetests in shp&amp;png_0527.py" type="tests" factoryName="Nosetests" temporary="true" nameIsGenerated="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data process" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/data process/shp\u0026png_0527.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.opencv_key" />
-        <item itemvalue="Python.shp&amp;png_0527" />
+        <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.opencv_find_key" />
         <item itemvalue="Python.scratchbook" />
-        <item itemvalue="Python.shp&amp;png_0527 (1)" />
-        <item itemvalue="Python tests.Nosetests in shp&amp;png_0527.py" />
+        <item itemvalue="Python.data_process" />
+        <item itemvalue="Python.photo_capture" />
       </list>
     </recent_temporary>
   </component>
@@ -608,16 +315,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="1" width="1932" height="1037" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24785195" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19799367" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3261105" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32632744" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39933628" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -635,127 +342,119 @@
     <MESSAGE value="update Foto" />
     <option name="LAST_COMMIT_MESSAGE" value="update Foto" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/photo_capture.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_process.py</url>
+          <line>213</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_process.py</url>
+          <line>227</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/scribble.py" />
     <entry file="file://$PROJECT_DIR$/NOTE.ipynb" />
-    <entry file="file://$PROJECT_DIR$/complete.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data process/shp&amp;png_0527.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="264" column="8" lean-forward="true" selection-start-line="264" selection-start-column="8" selection-end-line="264" selection-end-column="8" />
-          <folding>
-            <element signature="e#25#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/New folder/Foto_singleframeset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="308" column="62" selection-start-line="308" selection-start-column="62" selection-end-line="308" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://Z:/Vorlagen/Real Sense/in use/class_measure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="349" column="36" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class_measure.py">
+    <entry file="file://$PROJECT_DIR$/complete.txt" />
+    <entry file="file://$PROJECT_DIR$/data process/shp&amp;png_0527.py" />
+    <entry file="file://$USER_HOME$/Desktop/New folder/Foto_singleframeset.py" />
+    <entry file="file://$PROJECT_DIR$/shp&amp;png_0527.py" />
+    <entry file="file://$PROJECT_DIR$/Foto_singleframeset.py" />
+    <entry file="file://$PROJECT_DIR$/class_measure.py" />
+    <entry file="file://$PROJECT_DIR$/test_keep.py" />
+    <entry file="file://$PROJECT_DIR$/to png.py" />
+    <entry file="file://$PROJECT_DIR$/excel.py" />
+    <entry file="file://$PROJECT_DIR$/opencv_key.py" />
+    <entry file="file://$PROJECT_DIR$/jpgcreator.py" />
+    <entry file="file://$PROJECT_DIR$/arcgis integration/videoclass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_keep.py">
+    <entry file="file://$USER_HOME$/Desktop/blur_image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-919">
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/to png.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        <state relative-caret-position="-1276">
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/excel.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opencv_key.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/librealsense-master/wrappers/python/python.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="710" column="34" selection-start-line="710" selection-start-column="25" selection-end-line="710" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://Z:/Vorlagen/Real Sense/in use/class_measure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/opencv_find_key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scratchbook.py">
+    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/to_frame_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-476" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jpgcreator.py">
+    <entry file="file://$PROJECT_DIR$/scratchbook.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/photo_capture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="260">
+          <caret line="316" column="17" selection-start-line="316" selection-start-column="17" selection-end-line="316" selection-end-column="50" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#196#858#0" />
+            <element signature="e#880#2044#0" />
+            <element signature="e#2079#2285#0" />
+            <element signature="e#2316#2910#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="352" column="23" selection-start-line="352" selection-start-column="23" selection-end-line="352" selection-end-column="23" />
+        <state relative-caret-position="20">
+          <caret line="213" selection-start-line="213" selection-end-line="213" />
           <folding>
             <element signature="e#277#793#0" />
             <element signature="e#832#1028#0" />
@@ -767,14 +466,25 @@
             <element signature="e#3744#5456#0" />
             <element signature="e#5497#6732#0" />
             <element signature="e#6758#7142#0" />
-            <element signature="e#7172#8084#0" />
-            <element signature="e#8111#8721#0" />
-            <element signature="e#8746#9127#0" />
             <element signature="e#9152#10467#0" />
             <element signature="e#10504#11907#0" />
-            <element signature="e#11923#13111#0" />
-            <element signature="e#13145#13198#0" />
-            <element signature="e#13217#14162#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/arcgis integration/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/arcgis integration/class_measure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

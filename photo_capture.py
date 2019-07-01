@@ -120,6 +120,7 @@ def write_kml(lon,lat):
 def gps_dis(location_1,location_2):
     '''
     this is the calculation of the distance between two long/lat locations
+    input tuple/list
     '''
     R = 6373.0
 
@@ -229,6 +230,7 @@ def Camera(file_name):
     foto_location = [0,0]
     current_location = [0,0]
     Pause = False
+    take_pic = False
     i = 1
 
     bag_name = './bag/{}.bag'.format(file_name)
@@ -258,6 +260,7 @@ def Camera(file_name):
     # set auto exposure but process data first
     color_sensor = profile.get_device().query_sensors()[1]
     color_sensor.set_option(rs.option.auto_exposure_priority, True)
+
     try:
         while True:
             present = datetime.datetime.now()
@@ -269,25 +272,30 @@ def Camera(file_name):
                 continue
             key = cv2.waitKeyEx(1)
 
-            if Pause is False:
-                if key == 32 or gps_dis(current_location,foto_location) > 15 or key == 98:
-                    recorder.resume()
-                    time.sleep(0.05)
-                    frames = pipeline.wait_for_frames()
-                    depth_frame = frames.get_depth_frame()
-                    color_frame = frames.get_color_frame()
-                    var = rs.frame.get_frame_number(color_frame)
-                    vard = rs.frame.get_frame_number(depth_frame)
-                    foto_location = (lon,lat)
-                    print 'photo taken at:{}'.format(foto_location)
-                    recorder.pause()
-                    logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
-                    fotolog.write(logmsg)
-                    write_kml(lon,lat)
-                    i += 1
-                    continue
-            elif Pause is True:
-                pass
+            if Pause is True:
+                if key == 98 or key == 32:
+                    take_pic = True
+            elif Pause is False:
+                if gps_dis(current_location, foto_location) > 15 or key == 98 or key == 32:
+                    take_pic = True
+
+            if take_pic == True:
+                recorder.resume()
+                time.sleep(0.05)
+                frames = pipeline.wait_for_frames()
+                depth_frame = frames.get_depth_frame()
+                color_frame = frames.get_color_frame()
+                var = rs.frame.get_frame_number(color_frame)
+                vard = rs.frame.get_frame_number(depth_frame)
+                foto_location = (lon, lat)
+                print 'photo taken at:{}'.format(foto_location)
+                recorder.pause()
+                logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
+                fotolog.write(logmsg)
+                write_kml(lon, lat)
+                i += 1
+                take_pic = False
+                continue
 
             if key & 0xFF == ord('q') or key == 27:
                 cv2.destroyAllWindows()
@@ -321,6 +329,16 @@ def Camera(file_name):
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
             color_cvt_2 = cv2.resize(color_cvt, (320,240))
             images = np.hstack((color_cvt_2, depth_colormap_resize))
+
+            if Pause is True:
+                cv2.rectangle(images, (420, 40), (220, 160), (0, 0, 255), -1)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                bottomLeftCornerOfText = (220, 110)
+                fontScale = 2
+                fontColor = (0, 0, 0)
+                lineType = 4
+                cv2.putText(images, 'Pause', bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
+
             cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
             cv2.imshow('Color', images)
 
