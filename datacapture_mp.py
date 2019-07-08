@@ -3,10 +3,22 @@ import numpy as np
 import cv2
 import serial
 import datetime
-import threading
 import time
 import os
 from math import sin, cos, sqrt, atan2, radians
+from getch import pause_exit
+from multiprocessing import Process,Value, Array, Pipe
+
+
+def dir_generate(dir_name):
+    dir_name = str(dir_name)
+    if not os.path.exists(dir_name):
+        try:
+            os.makedirs(dir_name, 0o700)
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
+
 
 def port_check():
     serialPort = serial.Serial()
@@ -29,9 +41,10 @@ def port_check():
     if exist_port:
         return exist_port
     else:
-        print 'close other programs using gps'
-        raw_input('press enter to leave')
+        print ('close other programs using gps')
+        pause_exit(status=0, message='Press any key to leave')
         os._exit(0)
+
 
 def emptykml():
     kml = os.path.exists('./kml/Foto.kml')
@@ -80,16 +93,6 @@ def emptykml():
 	</kml>
     """
             kml.write(text)
-
-
-def dir_generate(dir_name):
-    dir_name = str(dir_name)
-    if not os.path.exists(dir_name):
-        try:
-            os.makedirs(dir_name, 0o700)
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                raise
 
 
 def write_kml(lon,lat):
@@ -150,12 +153,10 @@ def min2decimal(in_data):
     return lat
 
 
-def GPS():
+def GPS(Location,gps_on):
     '''
     the main function of starting the GPS
     '''
-    global camera_on, gps_on, current_location, lon, lat
-    gps_on = False
     print('GPS start')
     serialPort = serial.Serial()
     serialPort.port = port_check()
@@ -164,14 +165,14 @@ def GPS():
     serialPort.parity = serial.PARITY_NONE
     serialPort.timeout = 2
     serialPort.open()
-    print 'GPS opened successfully'
-    gps_on = True
+    print ('GPS opened successfully')
+    gps_on.value = True
     lon, lat = 0, 0
     try:
         while True:
             line = serialPort.readline()
-            data = line.split(",")
-
+            data = line.split(b',')
+            data = [x.decode("UTF-8") for x in data]
 
             if data[0] == '$GPRMC':
                 if data[2] == "A":
@@ -191,11 +192,11 @@ def GPS():
                     pass
 
             if lon ==0 or lat == 0:
-                print 'gps not ready'
+                print ('gps signal not ready')
 
             else:
-                current_location = (lon,lat)
-                #print 'gps ready, current location:{}'.format(current_location)
+                #print ('gps ready, current location:{},{}'.format(lon,lat))
+                Location[:] = [lon,lat]
 
                 with open('./kml/live.kml', 'w') as pos:
                     googleearth_message = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -210,47 +211,37 @@ def GPS():
                           </kml>'''.format(lon, lat)
                     pos.write(googleearth_message)
 
-            if gps_on is False:
+            if gps_on.value is False:
                 break
     except serial.SerialException:
-        print 'Error opening GPS'
-        gps_on = False
+        print ('Error opening GPS')
+        gps_on.value = False
     finally:
         serialPort.close()
         print('GPS finish')
 
 
-def Camera(file_name):
-    print 'Camera start'
-    global camera_on, camera_repeat, gps_on,i,gpsmsg,current_location, lon, lat
-    camera_on = True
-    camera_repeat = False
-    foto_location = [0,0]
-    current_location = [0,0]
-    Pause = False
-    take_pic = False
-    i = 1
-
-    bag_name = './bag/{}.bag'.format(file_name)
-    fotolog = open('foto_log/{}.txt'.format(file_name), 'w')
-
-    # set configurations and start
+def Camera(child_conn, pic, Frame_num, camera_on, bag):
+    print('camera start')
+    bag_name = './bag/{}.bag'.format(bag)
+    camera_on.value = True
     pipeline = rs.pipeline()
     config = rs.config()
     config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
     config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
     config.enable_record_to_file(bag_name)
     profile = pipeline.start(config)
-    # get record device and pause it
-    device = profile.get_device()
+
+    device = profile.get_device() # get record device
     recorder = device.as_recorder()
-    recorder.pause()
+    recorder.pause() # and pause it
+
     # get sensor and set to high density
     depth_sensor = device.first_depth_sensor()
     depth_sensor.set_option(rs.option.visual_preset, 4)
-    dev_range = depth_sensor.get_option_range(rs.option.visual_preset)
+    # dev_range = depth_sensor.get_option_range(rs.option.visual_preset)
     preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
-    print preset_name
+    print (preset_name)
     # set frame queue size to max
     sensor = profile.get_device().query_sensors()
     for x in sensor:
@@ -261,72 +252,61 @@ def Camera(file_name):
 
     try:
         while True:
-            present = datetime.datetime.now()
-            date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
             frames = pipeline.wait_for_frames()
             depth_frame = frames.get_depth_frame()
             color_frame = frames.get_color_frame()
-            if not depth_frame or not color_frame:
-                continue
-            key = cv2.waitKeyEx(1)
+            depth_color_frame = rs.colorizer().colorize(depth_frame)
+            depth_image = np.asanyarray(depth_color_frame.get_data())
+            color_image = np.asanyarray(color_frame.get_data())
+            child_conn.send((color_image, depth_image))
 
-            if Pause is True:
-                if key == 98 or key == 32:
-                    take_pic = True
-            elif Pause is False:
-                if gps_dis(current_location, foto_location) > 15 or key == 98 or key == 32:
-                    take_pic = True
-
-            if take_pic == True:
+            take_pic = pic.value
+            if take_pic == 1:
                 recorder.resume()
-                time.sleep(0.05)
                 frames = pipeline.wait_for_frames()
                 depth_frame = frames.get_depth_frame()
                 color_frame = frames.get_color_frame()
                 var = rs.frame.get_frame_number(color_frame)
                 vard = rs.frame.get_frame_number(depth_frame)
-                foto_location = (lon, lat)
-                print 'photo taken at:{}'.format(foto_location)
+                Frame_num[:] = [var,vard]
+                time.sleep(0.05)
+                #print ('photo taken')
                 recorder.pause()
-                logmsg = '{},{},{},{},{},{}\n'.format(i, str(var), str(vard), lon, lat, date)
-                fotolog.write(logmsg)
-                write_kml(lon, lat)
-                i += 1
-                take_pic = False
+
+                pic.value = False
                 continue
 
-            if key & 0xFF == ord('q') or key == 27:
-                cv2.destroyAllWindows()
-                camera_on = False
-                gps_on = False
-                camera_repeat = False
-                print('Camera finish\n')
+            elif camera_on.value == 0:
+                child_conn.close()
                 break
-            elif key == 114 or key == 2228224:
-                cv2.destroyAllWindows()
-                camera_on = False
-                camera_repeat = True
-                print 'camera will restart'
-                break
-            elif gps_on is False:
-                cv2.destroyAllWindows()
-                camera_repeat = False
-                break
-            elif cv2.waitKey(1) & 0xFF == ord('p') or key == 2162688:
-                if Pause is False:
-                    print 'pause pressed'
-                    Pause = True
-                elif Pause is True:
-                    print 'restart'
-                    Pause = False
 
-            depth_color_frame = rs.colorizer().colorize(depth_frame)
-            depth_image = np.asanyarray(depth_color_frame.get_data())
-            depth_colormap_resize = cv2.resize(depth_image,(424,240))
-            color_image = np.asanyarray(color_frame.get_data())
+    except RuntimeError:
+        print ('run')
+
+    finally:
+        print('pipeline stop')
+        pipeline.stop()
+
+
+def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, gps_on, Location):
+    Pause = False
+    i = 1
+    foto_location = (0, 0)
+    foto_frame = Frame_num[0]
+    logfile = open('./foto_log/{}.txt'.format(bag),'w')
+    try:
+        while True:
+            (lon, lat) = Location[:]
+            current_location = (lon, lat)
+            present = datetime.datetime.now()
+            date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
+
+            color_image,depth_image = parent_conn.recv()
+            depth_colormap_resize = cv2.resize(depth_image, (424, 240))
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
-            color_cvt_2 = cv2.resize(color_cvt, (320,240))
+            color_cvt_2 = cv2.resize(color_cvt, (320, 240))
             images = np.hstack((color_cvt_2, depth_colormap_resize))
+            cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
 
             if Pause is True:
                 cv2.rectangle(images, (420, 40), (220, 160), (0, 0, 255), -1)
@@ -337,46 +317,76 @@ def Camera(file_name):
                 lineType = 4
                 cv2.putText(images, 'Pause', bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
 
-            cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
             cv2.imshow('Color', images)
+            key = cv2.waitKeyEx(1)
 
-    except NameError:
-        os._exit(0)
+            if Pause is True:
+                if key == 98 or key == 32:
+                    take_pic.value = True
+            elif Pause is False:
+                if gps_dis(current_location, foto_location) > 15 or key == 98 or key == 32:
+                    take_pic.value = True
 
+            if take_pic.value == True:
+                (color_frame_num, depth_frame_num) = Frame_num[:]
+
+                if color_frame_num == foto_frame:
+                    pass
+                else:
+                    foto_location = (lon, lat)
+                    foto_frame = color_frame_num
+                    logmsg = '{},{},{},{},{},{}\n'.format(i, color_frame_num, depth_frame_num, lon, lat,date)
+                    print(logmsg)
+                    #print('Foto {} gemacht um {:.03},{:.04}'.format(i,lon,lat))
+                    logfile.write(logmsg)
+                    write_kml(lon,lat)
+                    #time.sleep(0.4)
+                    i += 1
+
+            if key & 0xFF == ord('q') or key == 27:
+                camera_on.value = False
+                gps_on.value = False
+                camera_repeat.value = False
+                print('Camera finish\n')
+            elif key == 114 or key == 2228224:
+                camera_on.value = False
+                camera_repeat.value = True
+                print ('camera will restart')
+            elif gps_on is False:
+                camera_repeat.value = False
+            elif cv2.waitKey(1) & 0xFF == ord('p') or key == 2162688:
+                if Pause is False:
+                    print ('pause pressed')
+                    Pause = True
+                elif Pause is True:
+                    print ('restart')
+                    Pause = False
+    except EOFError:
+        pass
     finally:
-        fotolog.close()
-        pipeline.stop()
+        logfile.close()
+        print ('end showing image')
 
 
-def camera_loop():
-    global camera_repeat, gps_on
+def bag_num():
     num = 1
-    camera_repeat = True
     now = datetime.datetime.now()
     time.sleep(1)
-    try:
-        while gps_on is False:
-            if gps_on is True:
-                break
-    finally:
-        print 'Starting Camera'
 
     try:
-        while gps_on is True:
+        while True:
             file_name = '{:02d}{:02d}_{:03d}'.format(now.month, now.day, num)
             bag_name = './bag/{}.bag'.format(file_name)
             exist = os.path.isfile(bag_name)
             if exist:
                 num+=1
-            elif camera_repeat == False:
-                break
             else:
-                print 'current filename:{}'.format(file_name)
-                Camera(file_name)
-                continue
+                print ('current filename:{}'.format(file_name))
+                break
 
     finally:
-        pass
+        return file_name
+
 
 
 def main():
@@ -386,14 +396,31 @@ def main():
 
     emptykml()
 
-    gps_thread = threading.Thread(target=GPS, name='T1')
-    camera_thread = threading.Thread(target=camera_loop, name='T2')
-    gps_thread.start()
-    camera_thread.start()
-    camera_thread.join()
-    gps_thread.join()
-    print('all done\n')
+    Location = Array('d',[0,0])
+    Frame_num = Array('i',[0,0])
 
+    take_pic = Value('i',False)
+    camera_on = Value('i',True)
+    camera_repeat = Value('i',True)
+    gps_on = Value('i',False)
+
+    gps_process = Process(target=GPS, args=(Location,gps_on,))
+    gps_process.start()
+
+    print('Program Start')
+    while camera_repeat.value:
+        parent_conn, child_conn = Pipe()
+        bag = bag_num()
+        img_process = Process(target=Show_Image,
+                              args=(bag,parent_conn, take_pic, Frame_num, camera_on, camera_repeat, gps_on, Location,))
+        img_process.start()
+        Camera(child_conn,take_pic,Frame_num,camera_on,bag)
+
+        print ('terminated')
+
+    gps_process.terminate()
+
+    print ('all end')
 
 if __name__ == '__main__':
     main()
