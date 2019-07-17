@@ -17,6 +17,7 @@ pip install --upgrade pip
 pip install --user pyrealsense2 
 pip install --user opencv-python 
 pip install --user argparse
+pip install --user py-getch
 ```
 ### Data Preparation
 use the data capture it will create 
