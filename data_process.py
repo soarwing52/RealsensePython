@@ -113,7 +113,8 @@ def dir_generate(in_dir):
     if not os.path.exists(in_dir):
         try:
             os.makedirs(in_dir, 0o700)
-
+        except WindowsError:
+            print 'already exist'
         finally:
             pass
     return in_dir
@@ -233,7 +234,7 @@ def pair(num,tet,ans):
 
     match = [x.strip().split(',') for x in match]
     foto = [x.strip().split(',') for x in foto]
-
+    written_lonlat = [0,0]
     for lines_m in match:
         color_m = lines_m[1]
         Depth = lines_m[2]
@@ -246,9 +247,10 @@ def pair(num,tet,ans):
             jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, color_m)
 
             ans = abs(int(color_l) - int(color_m))
-            if ans < 5:
+            if ans < 5 and written_lonlat != [Lat,Lon] and os.path.isfile(project_dir + '/jpg/{}-{}.jpg'.format(num,color_m)):
                 info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, jpg)
                 tet.write(info)
+                written_lonlat = [Lat, Lon]
 
     print num + ' done'
 
@@ -347,9 +349,10 @@ def color_to_jpg(input_file):
                 cv2.imwrite((jpg_name), color_cvt, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     except RuntimeError:
-        print 'frame covert finished for ' + input_file
+        
         cv2.destroyAllWindows()
     finally:
+        print 'frame covert finished for ' + input_file
         pipeline.stop()
 
 
