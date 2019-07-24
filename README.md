@@ -48,6 +48,13 @@ it will put the recorded bag in bag format,
 
 information of index,color frame number, depth frame number, longtitude, lattitude, day, month, year, timewill be saved in txt format in foto_log
 
+The new version:
+now it will write two csv files, and is used to open in QGIS, set open layer with csv, and the rendering frequency 1-5 seconds 
+depends on the performance of your hardware.
+The reason is QGIS can render the huge amount of point data better than Google Earth
+
+
+------------------------------------------------------------------------------------------------------------------
 kml will generate live location as live, and the location with recorded places in Foto.kml
 use Google Earth: Temporary Places/Add/Networklink link to folder/kml/ live for location Foto.kml for foto point
 
