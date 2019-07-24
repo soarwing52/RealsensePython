@@ -346,7 +346,11 @@ def color_to_jpg(input_file):
                 pass
             else:
                 print 'compressing {}'.format(jpg_name)
-                cv2.imwrite((jpg_name), color_cvt, [cv2.IMWRITE_JPEG_QUALITY,100])
+                kernel = np.array([[-1, -1, -1],
+                                   [-1, 9, -1],
+                                   [-1, -1, -1]])
+                sharpened = cv2.filter2D(color_cvt, -1,kernel)  # applying the sharpening kernel to the input image & displaying it.
+                cv2.imwrite((jpg_name), sharpened, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     except RuntimeError:
         

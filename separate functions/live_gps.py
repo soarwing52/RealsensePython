@@ -32,7 +32,7 @@ def GPS():
     lon, lat = 0,0
     print('GPS start')
     serialPort = serial.Serial()
-    serialPort.port = 'COM7'
+    serialPort.port = 'COM6'
     serialPort.baudrate = 4800
     serialPort.bytesize = serial.EIGHTBITS
     serialPort.parity = serial.PARITY_NONE
@@ -62,7 +62,7 @@ def GPS():
                     print 'gps ready, current location:{}'.format(current_location)
                 else:
                     print 'searching'
-
+            """
             with open('./kml/live.kml', 'w') as pos:
                 googleearth_message = '''<?xml version="1.0" encoding="UTF-8"?>
                   <kml xmlns="http://www.opengis.net/kml/2.2">
@@ -75,7 +75,7 @@ def GPS():
                     </Placemark>
                   </kml>'''.format(lon, lat)
                 pos.write(googleearth_message)
-
+                """
     finally:
 
         print('GPS finish')

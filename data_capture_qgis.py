@@ -84,15 +84,16 @@ def GPS(Location,gps_on):
     the main function of starting the GPS
     '''
     print('GPS thread start')
+
+    # Set port
     serialPort = serial.Serial()
-    serialPort.port = port_check(gps_on)
+    serialPort.port = port_check(gps_on) # Check the available ports, return the valid one
     serialPort.baudrate = 4800
     serialPort.bytesize = serial.EIGHTBITS
     serialPort.parity = serial.PARITY_NONE
     serialPort.timeout = 2
     serialPort.open()
     print ('GPS opened successfully')
-    gps_on.value = True
     lon, lat = 0, 0
 
     try:
@@ -112,20 +113,17 @@ def GPS(Location,gps_on):
                     lat = min2decimal(data[2])
 
             if lon ==0 or lat == 0:
-                print ('gps signal not ready')
                 time.sleep(1)
 
             else:
                 #print ('gps ready, current location:{},{}'.format(lon,lat))
+                gps_on.value = True
                 Location[:] = [lon,lat]
                 with open('location.csv', 'w') as gps:
                     gps.write('Lat,Lon\n')
                     gps.write('{},{}'.format(lat,lon))
 
-
-
-
-            if gps_on.value is False:
+            if gps_on.value == False:
                 break
     except serial.SerialException:
         print ('Error opening GPS')
@@ -169,6 +167,8 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
             frames = pipeline.wait_for_frames()
             depth_frame = frames.get_depth_frame()
             color_frame = frames.get_color_frame()
+            var = rs.frame.get_frame_number(color_frame)
+            vard = rs.frame.get_frame_number(depth_frame)
             depth_color_frame = rs.colorizer().colorize(depth_frame)
             depth_image = np.asanyarray(depth_color_frame.get_data())
             color_image = np.asanyarray(color_frame.get_data())
@@ -185,6 +185,7 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
                 time.sleep(0.05)
                 recorder.pause()
                 take_pic.value = False
+
 
             elif camera_on.value == 0:
                 child_conn.close()
@@ -203,7 +204,7 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
     i = 1
     foto_location = (0, 0)
     foto_frame = Frame_num[0]
-    logfile = open('./foto_log/{}.txt'.format(bag),'w')
+
 
     try:
         while True:
@@ -211,6 +212,7 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
             current_location = (lon, lat)
             present = datetime.datetime.now()
             date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
+            local_take_pic = False
 
             color_image,depth_image = parent_conn.recv()
             depth_colormap_resize = cv2.resize(depth_image, (424, 240))
@@ -230,30 +232,28 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
 
             cv2.imshow('Color', images)
             key = cv2.waitKeyEx(1)
-            if take_pic.value == 1 or take_pic.value == True:
+            if take_pic.value == 1 or current_location == foto_location:
                 continue
 
-            if Pause is True:
-                if key == 98 or key == 32:
-                    take_pic.value = True
-            elif Pause is False:
-                if gps_dis(current_location, foto_location) > 15 or key == 98 or key == 32:
-                    take_pic.value = True
+            if Pause is False:
+                if gps_dis(current_location, foto_location) > 15:
+                    local_take_pic = True
 
-            if take_pic.value == True:
+            if key == 98 or key == 32:
+                local_take_pic = True
+
+            if local_take_pic == True:
+                take_pic.value = True
+                time.sleep(0.1)
                 (color_frame_num, depth_frame_num) = Frame_num[:]
-
-                if color_frame_num == foto_frame or current_location == foto_location:
-                    pass
-                else:
-                    foto_location = (lon, lat)
-                    foto_frame = color_frame_num
-                    logmsg = '{},{},{},{},{},{}\n'.format(i, color_frame_num, depth_frame_num, lon, lat,date)
-                    print('Foto {} gemacht um {:.03},{:.04}'.format(i,lon,lat))
+                logmsg = '{},{},{},{},{},{}\n'.format(i, color_frame_num, depth_frame_num, lon, lat,date)
+                print('Foto {} gemacht um {:.03},{:.04}'.format(i,lon,lat))
+                with open('./foto_log/{}.txt'.format(bag), 'a') as logfile:
                     logfile.write(logmsg)
-                    with open('fotolocation.csv', 'a') as record:
-                        record.write(logmsg)
-                    i += 1
+                with open('foto_location.csv', 'a') as record:
+                    record.write(logmsg)
+                foto_location = (lon, lat)
+                i += 1
 
             if key & 0xFF == ord('q') or key == 27:
                 camera_on.value = False
@@ -302,10 +302,12 @@ def bag_num():
 
 
 def main():
+
+    # Create Folders for Data
     folder_list = ('bag','foto_log')
     for folder in folder_list:
         dir_generate(folder)
-
+    # Create Variables between Processes
     Location = Array('d',[0,0])
     Frame_num = Array('i',[0,0])
 
@@ -314,6 +316,7 @@ def main():
     camera_repeat = Value('i',True)
     gps_on = Value('i',False)
 
+    # Start GPS process
     gps_process = Process(target=GPS, args=(Location,gps_on,))
     gps_process.start()
 
