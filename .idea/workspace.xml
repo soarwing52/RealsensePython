@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_capture_qgis.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_capture_qgis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/separate functions/live_gps.py" beforeDir="false" afterPath="$PROJECT_DIR$/separate functions/live_gps.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="348" selection-start-line="348" selection-end-line="351" selection-end-column="62" />
+            <state relative-caret-position="713">
+              <caret line="316" column="29" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
                 <element signature="e#277#793#0" />
@@ -41,24 +38,22 @@
                 <element signature="e#2803#3243#0" />
                 <element signature="e#3806#5518#0" />
                 <element signature="e#5559#6794#0" />
-                <element signature="e#6820#7204#0" />
                 <element signature="e#7234#8319#0" />
                 <element signature="e#8346#8956#0" />
                 <element signature="e#8981#9362#0" />
                 <element signature="e#9387#10702#0" />
+                <element signature="e#10739#12431#0" />
+                <element signature="e#12458#12962#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/separate functions/opencv_find_key.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scratch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="452">
+              <caret line="264" column="93" selection-start-line="264" selection-start-column="93" selection-end-line="264" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -103,9 +98,11 @@
         <option value="$PROJECT_DIR$/ccc.py" />
         <option value="$PROJECT_DIR$/cpu_cam.py" />
         <option value="$PROJECT_DIR$/scratchbook.py" />
-        <option value="$PROJECT_DIR$/scratch.py" />
         <option value="$PROJECT_DIR$/data_capture_qgis.py" />
         <option value="$PROJECT_DIR$/data_process.py" />
+        <option value="$PROJECT_DIR$/tkk.py" />
+        <option value="Z:/Vorlagen/Toolboxes/data.py" />
+        <option value="$PROJECT_DIR$/scratch.py" />
       </list>
     </option>
   </component>
@@ -137,6 +134,11 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -149,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_process">
+  <component name="RunManager" selected="Python.scratch">
     <configuration name="RealsensePython" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,7 +169,7 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
-    <configuration name="data_capture_qgis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -175,11 +177,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="Z:/Vorlagen/Toolboxes" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_capture_qgis.py" />
+      <option name="SCRIPT_NAME" value="Z:/Vorlagen/Toolboxes/data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -230,7 +232,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -251,7 +253,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratchbook" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="tkk" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -263,7 +265,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratchbook.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tkk.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -274,11 +276,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.data_process" />
-        <item itemvalue="Python.data_capture_qgis" />
+        <item itemvalue="Python.scratch" />
         <item itemvalue="Python.opencv_find_key" />
-        <item itemvalue="Python.scratch (1)" />
-        <item itemvalue="Python.scratchbook" />
+        <item itemvalue="Python.data" />
+        <item itemvalue="Python.tkk" />
+        <item itemvalue="Python.data_process" />
       </list>
     </recent_temporary>
   </component>
@@ -354,7 +356,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.18959913" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18959913" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398017" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,16 +439,20 @@
     <entry file="file://$PROJECT_DIR$/ccc.py" />
     <entry file="file://$PROJECT_DIR$/cpu_cam.py" />
     <entry file="file://$PROJECT_DIR$/scratchbook.py" />
-    <entry file="file://$USER_HOME$/Desktop/Neuer Ordner/final_blur.py">
+    <entry file="file://$USER_HOME$/Desktop/Neuer Ordner/final_blur.py" />
+    <entry file="file://$PROJECT_DIR$/photo_capture.py" />
+    <entry file="file://$PROJECT_DIR$/datacapture_mp.py" />
+    <entry file="file://$PROJECT_DIR$/tkk.py" />
+    <entry file="file://Z:/Vorlagen/Toolboxes/data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1942">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state relative-caret-position="660">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/photo_capture.py" />
-    <entry file="file://$PROJECT_DIR$/datacapture_mp.py" />
-    <entry file="file://$PROJECT_DIR$/scratch.py" />
     <entry file="file://$PROJECT_DIR$/data_capture_qgis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4740">
@@ -459,7 +465,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/separate functions/opencv_find_key.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="220">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -469,8 +475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_process.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="348" selection-start-line="348" selection-end-line="351" selection-end-column="62" />
+        <state relative-caret-position="713">
+          <caret line="316" column="29" selection-start-line="316" selection-start-column="29" selection-end-line="316" selection-end-column="29" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
             <element signature="e#277#793#0" />
@@ -480,12 +486,20 @@
             <element signature="e#2803#3243#0" />
             <element signature="e#3806#5518#0" />
             <element signature="e#5559#6794#0" />
-            <element signature="e#6820#7204#0" />
             <element signature="e#7234#8319#0" />
             <element signature="e#8346#8956#0" />
             <element signature="e#8981#9362#0" />
             <element signature="e#9387#10702#0" />
+            <element signature="e#10739#12431#0" />
+            <element signature="e#12458#12962#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="264" column="93" selection-start-line="264" selection-start-column="93" selection-end-line="264" selection-end-column="93" />
         </state>
       </provider>
     </entry>

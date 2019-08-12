@@ -90,6 +90,23 @@ def geotag():
     t.insert(END, 'geotagging fertig\n')
 
 
+def examine_bag(input_file):
+    try:
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_device_from_file(input_file, False)
+        config.enable_all_streams()
+        profile = pipeline.start(config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
+        pipeline.stop()
+    except RuntimeError:
+        print '{} unindexed'.format(input_file)
+    finally:
+        pass
+
+
 def dir_generate(in_dir):
     """exmaine if this folder exist, if not, create one"""
     in_dir = str(in_dir)
@@ -112,30 +129,129 @@ def get_dir(var):
     return project_dir
 
 
+def frame_list(input_file):
+    """write the frame list of the bag file
+    input: abspath"""
+    input_num = os.path.basename(input_file)[:-4]
+    project_dir = os.path.dirname(os.path.dirname(input_file))
+    list_dir = dir_generate(project_dir + '/list')
+
+    if os.path.isfile('{}/{}_color.txt'.format(list_dir, input_num)) and os.path.isfile('{}/{}_depth.txt'.format(list_dir, input_num)):
+        print 'list {} already exist'.format(input_num)
+        return
+
+    c_fold = open('{}/{}_color.txt'.format(list_dir, input_num), 'w')
+    d_fold = open('{}/{}_depth.txt'.format(list_dir, input_num), 'w')
+
+    try:
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_device_from_file(input_file, False)
+        config.enable_all_streams()
+        profile = pipeline.start(config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
+        align_to = rs.stream.color
+        align = rs.align(align_to)
+        while True:
+            frames = pipeline.wait_for_frames()
+            aligned_frames = align.process(frames)
+            color_frame = aligned_frames.get_color_frame()
+            depth_frame = aligned_frames.get_depth_frame()
+            num_d = rs.frame.get_frame_number(depth_frame)
+            num_c = rs.frame.get_frame_number(color_frame)
+            time_c = rs.frame.get_timestamp(color_frame)
+            time_d = rs.frame.get_timestamp(depth_frame)
+
+            c_fold.write('{},{}\n'.format(str(num_c), str(time_c)))
+            d_fold.write('{},{}\n'.format(str(num_d), str(time_d)))
+
+    except RuntimeError:
+        print '{} frame list ended'.format(input_num)
+    finally:
+        c_fold.close()
+        d_fold.close()
+
+
+def match_frame_list(input_file):
+    """match color and depth within the time of 25ms"""
+    input_num = os.path.basename(input_file)[:-4]
+    project_dir = os.path.dirname(os.path.dirname(input_file))
+    list_dir = dir_generate(project_dir + '/list')
+
+    with open('{}/{}_color.txt'.format(list_dir, input_num), 'r') as color:
+        color_frame_list = [x.strip().split(',') for x in color]
+
+    with open('{}/{}_depth.txt'.format(list_dir, input_num), 'r') as depth:
+        depth_frame_list = [x.strip().split(',') for x in depth]
+
+    f_list = []
+    for t_c in color_frame_list:
+        for t_d in depth_frame_list:
+            gap = float(t_c[1]) - float(t_d[1])
+            gap = abs(gap)
+            if gap < 25:
+                f_list.append(str(t_c[0]) + ',' + str(t_d[0]) + '\n')
+
+    unique_list = []
+
+    for elem in f_list:
+        if elem not in unique_list:
+            unique_list.append(elem)
+
+    i = 1
+    if os.path.isfile('{}/{}_matched.txt'.format(list_dir, input_num)):
+        return
+    with open('{}/{}_matched.txt'.format(list_dir, input_num), 'w') as matched:
+        for x in unique_list:
+            x = '{},{}'.format(i, x)
+            matched.write(x)
+            i += 1
+    matched.close()
+    print 'finished match list ' + input_file
+
+
+def create_list():
+    """TKinter Button, loop through the bag folder and create color,depth,match list"""
+    global project_dir,t
+    bag_dir = project_dir + '/bag'
+
+    x_list = ['{}/{}'.format(bag_dir,x) for x in os.listdir(bag_dir) ]
+    pool = mp.Pool()
+    pool.map(examine_bag, x_list)
+    pool.map(frame_list, x_list)
+    pool.map(match_frame_list, x_list)
+
+    t.insert(END, 'match list fertig\n')
+
+
 def pair(num,tet,ans):
-    """match fotolog and existing photos, with the accuracy of +-2 frames"""
+    """match the list of _matched.txt and fotolog, with the accuracy of +-5 frames"""
     project_dir = ans
-    photo_dir = project_dir + '/jpg'
-    with open('{}/foto_log/{}.txt'.format(project_dir, num), 'r') as foto:
-        foto = [x.strip().split(',') for x in foto]
+    match = open('{}/list/{}_matched.txt'.format(project_dir, num), 'r')
+    foto = open('{}/foto_log/{}.txt'.format(project_dir, num), 'r')
 
-    global written_lonlat
+    match = [x.strip().split(',') for x in match]
+    foto = [x.strip().split(',') for x in foto]
     written_lonlat = [0,0]
-    for lines_l in foto:
-        ID = lines_l[0]
-        color_l = lines_l[1]
-        Depth = lines_l[2]
-        Lon = lines_l[3]
-        Lat = lines_l[4]
-        Time = lines_l[8]
-        jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, color_l)
+    for lines_m in match:
+        color_m = lines_m[1]
+        Depth = lines_m[2]
+        for lines_l in foto:
+            ID = lines_l[0]
+            color_l = lines_l[1]
+            Lon = lines_l[3]
+            Lat = lines_l[4]
+            Time = lines_l[8]
+            jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, color_m)
 
-        for i in range(-2,2):
-            ans = int(color_l) + i
-            if os.path.isfile(project_dir + '/jpg/{}-{}.jpg'.format(num,ans)) and [Lat,Lon] != written_lonlat:
-                info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, ans, Depth, Lat, Lon, Time, jpg)
+            ans = abs(int(color_l) - int(color_m))
+            if ans < 5 and written_lonlat != [Lat,Lon] and os.path.isfile(project_dir + '/jpg/{}-{}.jpg'.format(num,color_m)):
+                info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, color_m, Depth, Lat, Lon, Time, jpg)
                 tet.write(info)
                 written_lonlat = [Lat, Lon]
+
     print num + ' done'
 
 
@@ -143,19 +259,21 @@ def pair_list(ans):
     """Tkinter Button, loop through files in fotolog and create paired matcher.txt in shp folder"""
     project_dir = ans
 
+    list_dir = dir_generate(project_dir + '/list')
     foto_log = project_dir + '/foto_log'
     shp_dir = dir_generate(project_dir + '/shp')
 
-    with open(shp_dir + '/matcher.txt', 'w') as txt:
-        txt.write('weg_num,foto_id,Color,Depth,Lat,Lon,Uhrzeit,jpg_path\n')
-        for log in os.listdir(foto_log):
-            num = log.split('.')[0]
-            try:
-                pair(num,txt,ans)
-            except IOError:
-                print 'no file {}'.format(num)
-            finally:
-                print 'pair list done'
+    tet = open(shp_dir + '/matcher.txt', 'w')
+    tet.write('weg_num,foto_id,Color,Depth,Lat,Lon,Uhrzeit,jpg_path\n')
+
+    for log in os.listdir(foto_log):
+        num = log.split('.')[0]
+        try:
+            pair(num,tet,ans)
+        except IOError:
+            print 'no file {}'.format(num)
+        finally:
+            print 'pair list done'
 
 
 def matchershp():
@@ -168,6 +286,32 @@ def matchershp():
     arcpy.FeatureClassToShapefile_conversion('Fotopunkte', shp_dir)
     t.insert(END, 'Fotopunkte.shp fertig\n')
 
+
+def Fotopunkte():
+    """create Fotopunkte.txt and shp from all fotologs, the lost frames and the small latency caused frame number not
+    match can't be detected """
+    global project_dir,t
+    shp_dir = dir_generate(project_dir + '/shp')
+    fotolog = project_dir + '/foto_log'
+    foto_shp = open(project_dir + '/shp/Fotopunkte.txt', 'w')
+    foto_shp.write('weg_num,foto_id,Color,Depth,Lon,Lat,jpg_path,Uhrzeit\n')
+    for x in os.listdir(fotolog):
+        file_name = '{}/{}'.format(fotolog, x)
+        with open(file_name, 'r') as log:
+            for data in log:
+                data = data.split(',')
+                foto_id, Color, Depth, Long, Lat, time = data[0], data[1], data[2], data[4], data[3], data[8]
+                weg_nummer = x[:-4]
+                path = '{}/jpg/{}-{}.jpg'.format(project_dir, weg_nummer, Color)
+                shp_line = '{},{},{},{},{},{},{},{}'.format(weg_nummer, foto_id, Color, Depth, Long, Lat, path, time)
+                foto_shp.write(shp_line)
+        t.insert(END, 'processed {}\n'.format(x))
+    foto_shp.close()
+    arcpy.env.overwriteOutput = True
+    spRef = 'WGS 1984'
+    management.MakeXYEventLayer(shp_dir + '/Fotopunkte.txt', 'Lat', 'Lon', 'Fotopunkte', spRef)
+    arcpy.FeatureClassToShapefile_conversion('Fotopunkte', shp_dir)
+    t.insert(END, 'Fotopunkte.shp fertig\n')
 
 
 def color_to_jpg(input_file):
@@ -261,8 +405,9 @@ def main():
     t = Text(frame_b, width=40, height=10)
     t.pack()
 
+    Button(frame_2, text='generate list', command=lambda: create_list()).grid(row=1, column=1)
     Button(frame_2, text='generate shp', command=lambda: from_bag_to_list(project_dir)).grid(row=1, column=2)
-    Button(frame_2, text='generate jpg', command=lambda: generate_jpg()).grid(row=1, column=1)
+    Button(frame_2, text='generate jpg', command=lambda: generate_jpg()).grid(row=1, column=3)
     Button(frame_2, text='geotag', command=geotag).grid(row=1, column=4)
 
     root.mainloop()
