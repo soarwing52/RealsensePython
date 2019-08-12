@@ -1,6 +1,6 @@
 # PyRealsense for d435
 
-in this project will have record bag and measure picture from bag
+in this project will have record bag and measure picture from bag with the RealsenseD435 camera
 
 ## Getting Started
 
@@ -48,6 +48,13 @@ it will put the recorded bag in bag format,
 
 information of index,color frame number, depth frame number, longtitude, lattitude, day, month, year, timewill be saved in txt format in foto_log
 
+The new version:
+now it will write two csv files, and is used to open in QGIS, set open layer with csv, and the rendering frequency 1-5 seconds 
+depends on the performance of your hardware.
+The reason is QGIS can render the huge amount of point data better than Google Earth
+
+
+------------------------------------------------------------------------------------------------------------------
 kml will generate live location as live, and the location with recorded places in Foto.kml
 use Google Earth: Temporary Places/Add/Networklink link to folder/kml/ live for location Foto.kml for foto point
 
@@ -93,57 +100,7 @@ in here we use subprocess because the current realsense library will freeze afte
 and ArcMap don't support multithread nor multicore
 therefore we can't use the simple import but have to call out command line and then run python
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Che-Yi Hung** - *Initial work* - [soarwing52](https://github.com/soarwing52)
 
