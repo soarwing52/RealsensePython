@@ -11,6 +11,10 @@ from multiprocessing import Process,Value, Array, Pipe
 
 
 def dir_generate(dir_name):
+    """
+    :param dir_name: input complete path of the desired directory
+    :return: None
+    """
     dir_name = str(dir_name)
     if not os.path.exists(dir_name):
         try:
@@ -20,6 +24,10 @@ def dir_generate(dir_name):
 
 
 def port_check(gps_on):
+    """
+    :param gps_on: when started it is False
+    :return: when gps started correctly, return True, if error return 3, which will shut down the program
+    """
     serialPort = serial.Serial()
     serialPort.baudrate = 4800
     serialPort.bytesize = serial.EIGHTBITS
@@ -47,10 +55,13 @@ def port_check(gps_on):
 
 
 def gps_dis(location_1,location_2):
-    '''
+    """
     this is the calculation of the distance between two long/lat locations
     input tuple/list
-    '''
+    :param location_1: [Lon, Lat]
+    :param location_2: [Lon, Lat]
+    :return: distance in meter
+    """
     R = 6373.0
 
     lat1 = radians(location_1[1])
@@ -71,7 +82,11 @@ def gps_dis(location_1,location_2):
 
 
 def min2decimal(in_data):
-    '''transforming the data of long lat '''
+    """
+    transform lon,lat from 00'00" to decimal
+    :param in_data: lon / lat
+    :return: in decimal poiints
+    """
     latgps = float(in_data)
     latdeg = int(latgps / 100)
     latmin = latgps - latdeg * 100
@@ -80,9 +95,13 @@ def min2decimal(in_data):
 
 
 def GPS(Location,gps_on):
-    '''
+    """
     the main function of starting the GPS
-    '''
+    :param Location: mp.Array
+    :param gps_on: mp.Value
+    :return:
+    """
+
     print('GPS thread start')
 
     # Set port
@@ -134,6 +153,15 @@ def GPS(Location,gps_on):
 
 
 def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
+    """
+    Main camera running
+    :param child_conn: source of image, sending to openCV
+    :param take_pic: mp.Value, receive True will take one picture, and send back False when done
+    :param Frame_num: mp.Array, frame number of the picture taken
+    :param camera_on: mp.Value, the status of camera
+    :param bag: the number of the current recorded file
+    :return:
+    """
     print('camera start')
     bag_name = './bag/{}.bag'.format(bag)
     camera_on.value = True
@@ -200,6 +228,18 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
 
 
 def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, gps_on, Location):
+    """
+    The GUI for the program, using openCV to send and receive instructions
+    :param bag: number of the recorded file
+    :param parent_conn: receiver side of image, to show on openCV, the recorded bag will still in Camera
+    :param take_pic: send True to let Camera take picture
+    :param Frame_num: receive frame number
+    :param camera_on: receive camera situation
+    :param camera_repeat: mp.Value, determine if automatic start the next record
+    :param gps_on: receive the status of gps
+    :param Location: the current Lon, Lat
+    :return:
+    """
     Pause = False
     i = 1
     foto_location = (0, 0)
@@ -281,6 +321,10 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
 
 
 def bag_num():
+    """
+    Generate the number of record file MMDD001
+    :return:
+    """
     num = 1
     now = datetime.datetime.now()
     time.sleep(1)
