@@ -31,7 +31,7 @@ def to_deg(value, loc):
 
 
 def change_to_rational(number):
-    """convert a number to rantional
+    """convert a number to rational
     Keyword arguments: number
     return: tuple like (1, 2), (numerator, denominator)
     """
@@ -69,6 +69,10 @@ def set_gps_location(file_name, lat, lng, altitude):
 
 
 def geotag():
+    """
+    collect gps location of matcher.txt and match to jpg
+    :return:
+    """
     global project_dir,t
     print 'start geotag'
     fotolog = project_dir + '/shp/matcher.txt'
