@@ -99,24 +99,17 @@ put in
 
 ```
 import subprocess
-def OpenLink ( [weg_num]  , [png_path] ):
-  bag = [png_path] 
+def OpenLink ( [weg_num] , [OBJECTID]   , [jpg_path] ):
+  bag = [jpg_path] 
   weg_id = [weg_num] 
-  comnd = 'python videoclass.py -w {} -p {}'.format(weg_id,bag)
+  c_f_n= str( [OBJECTID]  )
+  comnd = 'python command.py -n {} -w {} -p {} -t V '.format(c_f_n,weg_id,bag)
   subprocess.call(comnd)
   return
 ```
-or
-```
-import subprocess
-def OpenLink ( [weg_num] , [foto_id]  , [png_path] ):
-  bag = [png_path] 
-  weg_id = [weg_num] 
-  c_f_n= str( [foto_id]  )
-  comnd = 'python measure.py -n {} -w {} -p {}'.format(c_f_n,weg_id,bag)
-  subprocess.call(comnd)
-  return
-```
+
+the -t means type, if its V it will show video mode, else it will be measure
+
 The method I suggest here is to use the hlk file, by open hlk from the arcgis integration folder, the working directory will be automatically changed to this folder. 
 Then the video, photo function can be open automatically.
 
