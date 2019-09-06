@@ -22,7 +22,7 @@ class Arc_Real:
     def video(self):
         try:
             self.config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
-            profile = pipeline.start(self.config)
+            profile = self.pipeline.start(self.config)
             device = profile.get_device()
             playback = device.as_playback()
             playback.set_real_time(False)
@@ -37,6 +37,7 @@ class Arc_Real:
                 color_image = np.asanyarray(color_frame.get_data())
                 color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
                 color_cvt = cv2.resize(color_cvt, (1680, 1050))
+
                 cv2.rectangle(color_cvt, (540, 20), (640, 60), (255, 255, 255), -1)
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 bottomLeftCornerOfText = (550, 50)
@@ -44,6 +45,7 @@ class Arc_Real:
                 fontColor = (0, 0, 0)
                 lineType = 2
                 cv2.putText(color_cvt, str(c_frame_num), bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
+
                 cv2.namedWindow("Color Stream", cv2.WINDOW_FULLSCREEN)
                 cv2.imshow("Color Stream", color_cvt)
                 key = cv2.waitKey(1000)
@@ -57,16 +59,16 @@ class Arc_Real:
                     break
                 elif key == 112:
                     if pause is False:
-                        print 'pause'
+                        print('pause')
                         pause = True
                         key = cv2.waitKey(0)
 
         except RuntimeError:
-            print 'file ended'
+            print('file ended')
             cv2.destroyAllWindows()
 
         finally:
-            print 'finish'
+            print('finish')
             os._exit(0)
             self.pipeline.stop()
 
@@ -129,10 +131,10 @@ class Arc_Real:
 
 
         except IndexError:
-            print 'file ended'
+            print('file ended')
 
         finally:
-            print 'finally'
+            print('finally')
             os._exit(0)
 
 
@@ -155,7 +157,7 @@ class Arc_Real:
                 frame_num = rs.frame.get_frame_number(frame)
 
                 if abs(int(frame_num) - int(num)) < 5:
-                    print 'match {} {}'.format(type, frame_num)
+                    print('match {} {}'.format(type, frame_num))
                     self.search_count = 0
                     break
 
@@ -183,10 +185,10 @@ class Arc_Real:
 
 
 def main():
-    a = Arc_Real(r'X:/Mittelweser/0612/jpg/0612_003-511.jpg','0612_003')
-    #a.video()
-    a.measure('5793')
-    print a
+    a = Arc_Real(r'X:/Mittelweser/0607/jpg/0607_039-1509.jpg','0607_039')
+    a.video()
+    #a.measure('5793')
+    print(a)
 
 if __name__ == '__main__':
     main()
