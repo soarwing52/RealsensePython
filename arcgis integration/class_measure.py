@@ -6,35 +6,47 @@ from matplotlib.widgets2 import Ruler
 import os
 
 class Arc_Real:
-    def __init__(self,path,weg_id):
-        self.path = path
-        self.weg_id = weg_id
-        self.BagFilePath = os.path.abspath(path)
+    def __init__(self, object_id):
+        self.command = {'q': 0, 'left': -1, 'right': 1}
+        with open('all.csv', 'r') as csvfile:
+            self.frame_list = [[elt.strip() for elt in line.split(';')] for line in csvfile]
+
+        obj = self.get_attribute(object_id=object_id)
+        self.search_count = 0
+        self.path = obj['jpg_path']
+        self.weg_id = obj['weg_num']
+        self.color_frame_num = obj['Color']
+        self.BagFilePath = os.path.abspath(self.path)
         self.file_dir = os.path.dirname(self.BagFilePath)
         self.Pro_Dir = os.path.dirname(self.file_dir)
         self.file_name = '{}\\bag\\{}.bag'.format(self.Pro_Dir,self.weg_id)
         self.pipeline = rs.pipeline()
         self.config = rs.config()
         self.config.enable_device_from_file(self.file_name)
-        self.command = {'q': 0, 'left': -1, 'right': 1}
+
+        self.config.enable_all_streams()
+        profile = self.pipeline.start(self.config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
+
+
+
+    def get_attribute(self, object_id=False, color=False, weg_id=False):
+        title = self.frame_list[0]
+        for obj in self.frame_list:
+            if obj[0] == object_id or (obj[1] == weg_id and obj[5] == color):
+                self.i = self.frame_list.index(obj)
+                obj = dict(zip(title, obj))
+                return obj
 
 
     def video(self):
         try:
-            self.config.enable_stream(rs.stream.color, 1920, 1080, rs.format.rgb8, 30)
-            profile = self.pipeline.start(self.config)
-            device = profile.get_device()
-            playback = device.as_playback()
-            playback.set_real_time(False)
-
+            self.color_frame = self.frame_getter('color',int(self.color_frame_num))
             while True:
-                pause = False
-                frames = self.pipeline.wait_for_frames()
-                color_frame = frames.get_color_frame()
-                if not color_frame:
-                    continue
-                c_frame_num = rs.frame.get_frame_number(color_frame)
-                color_image = np.asanyarray(color_frame.get_data())
+                c_frame_num = str(self.color_frame.get_frame_number())
+                color_image = np.asanyarray(self.color_frame.get_data())
                 color_cvt = cv2.cvtColor(color_image, cv2.COLOR_BGR2RGB)
                 color_cvt = cv2.resize(color_cvt, (1680, 1050))
 
@@ -44,7 +56,7 @@ class Arc_Real:
                 fontScale = 1
                 fontColor = (0, 0, 0)
                 lineType = 2
-                cv2.putText(color_cvt, str(c_frame_num), bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
+                cv2.putText(color_cvt, c_frame_num, bottomLeftCornerOfText, font, fontScale, fontColor, lineType)
 
                 cv2.namedWindow("Color Stream", cv2.WINDOW_FULLSCREEN)
                 cv2.imshow("Color Stream", color_cvt)
@@ -58,10 +70,26 @@ class Arc_Real:
                     cv2.destroyAllWindows()
                     break
                 elif key == 112:
-                    if pause is False:
-                        print('pause')
-                        pause = True
-                        key = cv2.waitKey(0)
+                    cv2.rectangle(color_cvt, (500, 20), (520, 60), (255, 255, 255), -1)
+                    cv2.putText(color_cvt, 'P', (500,50), font, fontScale, fontColor,
+                                lineType)
+
+                    cv2.imshow("Color Stream", color_cvt)
+                    cv2.waitKey(0)
+
+                elif key == 32:
+                    item = self.get_attribute(color=c_frame_num, weg_id=self.weg_id)
+                    if item is not None:
+                        cv2.rectangle(color_cvt, (500, 20), (525, 60), (255, 255, 255), -1)
+                        cv2.putText(color_cvt, 'M', (500, 50), font, fontScale, fontColor,
+                                    lineType)
+
+                        cv2.imshow("Color Stream", color_cvt)
+                        cv2.waitKey(0)
+                        self.measure2(item['OBJECTID'])
+
+                frames = self.pipeline.wait_for_frames()
+                self.color_frame = frames.get_color_frame()
 
         except RuntimeError:
             print('file ended')
@@ -72,33 +100,12 @@ class Arc_Real:
             os._exit(0)
             self.pipeline.stop()
 
-    def measure(self,object_id):
-
-        self.config.enable_all_streams()
-
-        profile = self.pipeline.start(self.config)
-
-        device = profile.get_device()
-        playback = device.as_playback()
-        playback.set_real_time(False)
-        frame_list = []
-
-        with open('all.csv'.format(self.Pro_Dir), 'r') as csvfile:
-            for line in csvfile:
-                frame = [elt.strip() for elt in line.split(';')]
-                frame_list.append(frame)
-
-        for obj in frame_list:
-            if obj[0] == object_id:
-                self.i = frame_list.index(obj)
-                break
-
-        self.search_count = 0
-
+    def measure2(self,object_id):
+        obj = self.get_attribute(object_id=object_id)
+        x, depth_num, color_num = self.i, obj['Depth'], obj['Color']
         try:
             while True:
-                x, depth_num , color_num = self.i, frame_list[self.i][6], frame_list[self.i][5]
-
+                print(x, depth_num, color_num)
                 depth_frame = self.frame_getter('depth', depth_num)
                 color_frame = self.frame_getter('color', color_num)
 
@@ -107,7 +114,8 @@ class Arc_Real:
                 fig = plt.figure()
                 fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
                 ax = fig.add_axes([0, 0, 1, 1])
-                number = 'Wegnummer:{}\nFrame: c:{}/d:{}'.format(self.weg_id, self.color_frame_num, self.depth_frame_num)
+                number = 'Wegnummer:{}\nFrame: c:{}/d:{}'.format(self.weg_id, self.color_frame_num,
+                                                                 self.depth_frame_num)
                 plt.imshow(color_image)
                 ax.grid(False)
                 fig.suptitle(number, fontsize=20)
@@ -123,19 +131,20 @@ class Arc_Real:
                               )
 
                 cid = plt.gcf().canvas.mpl_connect('key_press_event', self.quit_figure)
-                plt.xlim((-80,2000))
-                plt.ylim((1100,-100))
+                plt.xlim((-80, 2000))
+                plt.ylim((1100, -100))
                 plt.show()
-                if x == self.i: # close script if close window or press q
-                    os._exit(0)
+                if x == self.i:  # close script if close window or press q
+                   break
 
+                x, depth_num, color_num = self.i, self.frame_list[self.i][6], self.frame_list[self.i][5]
 
         except IndexError:
             print('file ended')
 
         finally:
-            print('finally')
-            os._exit(0)
+            print('close measure')
+
 
 
     def frame_getter(self, type, num):
@@ -177,17 +186,18 @@ class Arc_Real:
         :return:
         """
         if event.key:
-            plt.close(event.canvas.figure)
-            self.direction = event.key
-            self.i += self.command[event.key]
+            try:
+                self.direction = event.key
+                self.i += self.command[event.key]
+                plt.close(event.canvas.figure)
+            except:
+                pass
 
 
 
 
 def main():
-    a = Arc_Real(r'X:/Mittelweser/0607/jpg/0607_039-1509.jpg','0607_039')
-    a.video()
-    #a.measure('5793')
+    Arc_Real('5793').video()
     print(a)
 
 if __name__ == '__main__':
