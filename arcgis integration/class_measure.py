@@ -21,8 +21,6 @@ class Arc_Real:
 
         obj = self.get_attribute(color=self.color_frame_num, weg_id=self.weg_id)
 
-
-
         self.file_name = '{}\\bag\\{}.bag'.format(self.Pro_Dir,self.weg_id)
 
         self.pipeline = rs.pipeline()
@@ -37,13 +35,14 @@ class Arc_Real:
 
         self.search_count = 0
 
-    def get_attribute(self, color='0', weg_id='0'):
+    def get_attribute(self, color, weg_id):
         title = self.frame_list[0]
         for obj in self.frame_list:
             if obj[0] == weg_id and abs(int(obj[2]) - int(color)) < 5:
                 self.i = self.frame_list.index(obj)
                 obj = dict(zip(title, obj))
                 return obj
+
 
 
 
@@ -83,7 +82,7 @@ class Arc_Real:
                     cv2.imshow("Color Stream", color_cvt)
                     cv2.waitKey(0)
 
-                elif key == 32:
+                elif key == 32 or key == 27:
                     item = self.get_attribute(color=c_frame_num, weg_id=self.weg_id)
                     if item is not None:
                         cv2.rectangle(color_cvt, (500, 20), (525, 60), (255, 255, 255), -1)
@@ -92,7 +91,7 @@ class Arc_Real:
 
                         cv2.imshow("Color Stream", color_cvt)
                         cv2.waitKey(0)
-                        self.measure2(item)
+                        self.measure(item)
 
                 frames = self.pipeline.wait_for_frames()
                 self.color_frame = frames.get_color_frame()
@@ -106,11 +105,10 @@ class Arc_Real:
             os._exit(0)
             self.pipeline.stop()
 
-    def measure2(self,obj):
+    def measure(self,obj):
         x, depth_num, color_num = self.i, obj['Depth'], obj['Color']
         try:
             while True:
-                print(x, depth_num, color_num)
                 depth_frame = self.frame_getter('depth', depth_num)
                 color_frame = self.frame_getter('color', color_num)
 
@@ -149,8 +147,6 @@ class Arc_Real:
         finally:
             print('close measure')
 
-
-
     def frame_getter(self, type, num):
         align_to = rs.stream.color
         align = rs.align(align_to)
@@ -168,7 +164,7 @@ class Arc_Real:
                 if not frame:
                     continue
                 frame_num = rs.frame.get_frame_number(frame)
-
+                self.count_search(frame_num, int(num))
                 if abs(int(frame_num) - int(num)) < 5:
                     print('match {} {}'.format(type, frame_num))
                     self.search_count = 0
@@ -181,6 +177,7 @@ class Arc_Real:
         if abs(now - target) < 100:
             self.search_count += 1
             if self.search_count > 10:
+
                 self.i += self.command[event.key]
 
     def quit_figure(self, event):
@@ -198,10 +195,8 @@ class Arc_Real:
                 pass
 
 
-
-
 def main():
-    Arc_Real(r'X:/test/jpg/0717_005-573.jpg').video()
+    Arc_Real(r'X:/Mittelweser/0520/jpg/0520_017-452.jpg').video()
 
 if __name__ == '__main__':
     main()
