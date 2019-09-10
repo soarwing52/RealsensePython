@@ -6,20 +6,25 @@ from matplotlib.widgets2 import Ruler
 import os
 
 class Arc_Real:
-    def __init__(self, object_id):
+    def __init__(self, jpg_path):
         self.command = {'q': 0, 'left': -1, 'right': 1}
-        with open('all.csv', 'r') as csvfile:
-            self.frame_list = [[elt.strip() for elt in line.split(';')] for line in csvfile]
-
-        obj = self.get_attribute(object_id=object_id)
-        self.search_count = 0
-        self.path = obj['jpg_path']
-        self.weg_id = obj['weg_num']
-        self.color_frame_num = obj['Color']
-        self.BagFilePath = os.path.abspath(self.path)
+        self.path = jpg_path
+        self.BagFilePath = os.path.abspath(jpg_path)
         self.file_dir = os.path.dirname(self.BagFilePath)
         self.Pro_Dir = os.path.dirname(self.file_dir)
+
+        file_id = os.path.splitext(os.path.basename(self.BagFilePath))[0].split('-')
+        self.weg_id, self.color_frame_num = file_id[0], file_id[1]
+
+        with open('{}/shp/matcher.txt'.format(self.Pro_Dir), 'r') as txtfile:
+            self.frame_list = [[elt.strip() for elt in line.split(',')] for line in txtfile]
+
+        obj = self.get_attribute(color=self.color_frame_num, weg_id=self.weg_id)
+
+
+
         self.file_name = '{}\\bag\\{}.bag'.format(self.Pro_Dir,self.weg_id)
+
         self.pipeline = rs.pipeline()
         self.config = rs.config()
         self.config.enable_device_from_file(self.file_name)
@@ -30,15 +35,16 @@ class Arc_Real:
         playback = device.as_playback()
         playback.set_real_time(False)
 
+        self.search_count = 0
 
-
-    def get_attribute(self, object_id=False, color=False, weg_id=False):
+    def get_attribute(self, color='0', weg_id='0'):
         title = self.frame_list[0]
         for obj in self.frame_list:
-            if obj[0] == object_id or (obj[1] == weg_id and obj[5] == color):
+            if obj[0] == weg_id and abs(int(obj[2]) - int(color)) < 5:
                 self.i = self.frame_list.index(obj)
                 obj = dict(zip(title, obj))
                 return obj
+
 
 
     def video(self):
@@ -86,7 +92,7 @@ class Arc_Real:
 
                         cv2.imshow("Color Stream", color_cvt)
                         cv2.waitKey(0)
-                        self.measure2(item['OBJECTID'])
+                        self.measure2(item)
 
                 frames = self.pipeline.wait_for_frames()
                 self.color_frame = frames.get_color_frame()
@@ -100,8 +106,7 @@ class Arc_Real:
             os._exit(0)
             self.pipeline.stop()
 
-    def measure2(self,object_id):
-        obj = self.get_attribute(object_id=object_id)
+    def measure2(self,obj):
         x, depth_num, color_num = self.i, obj['Depth'], obj['Color']
         try:
             while True:
@@ -137,8 +142,7 @@ class Arc_Real:
                 if x == self.i:  # close script if close window or press q
                    break
 
-                x, depth_num, color_num = self.i, self.frame_list[self.i][6], self.frame_list[self.i][5]
-
+                x, depth_num, color_num = self.i, self.frame_list[self.i][3], self.frame_list[self.i][2]
         except IndexError:
             print('file ended')
 
@@ -197,8 +201,7 @@ class Arc_Real:
 
 
 def main():
-    Arc_Real('5793').video()
-    print(a)
+    Arc_Real(r'X:/test/jpg/0717_005-573.jpg').video()
 
 if __name__ == '__main__':
     main()

@@ -3,11 +3,11 @@ import class_measure
 
 
 ap =  argparse.ArgumentParser()
-ap.add_argument("-i","--id", required=False)
+ap.add_argument("-p","--path", required=False)
 
 args = vars(ap.parse_args())
 
-obj_id = args['id']
+jpg_path = args['path']
 
-a = class_measure.Arc_Real(obj_id).video()
+a = class_measure.Arc_Real(jpg_path).video()
 

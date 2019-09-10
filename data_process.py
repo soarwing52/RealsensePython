@@ -132,11 +132,12 @@ def pair(num,tet,ans):
         Lon = lines_l[3]
         Lat = lines_l[4]
         Time = lines_l[8]
-        jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, color_l)
+
 
         for i in range(-2,2):
             ans = int(color_l) + i
-            if os.path.isfile(project_dir + '/jpg/{}-{}.jpg'.format(num,ans)) and [Lat,Lon] != written_lonlat:
+            if os.path.isfile('{}/jpg/{}-{}.jpg'.format(project_dir,num,ans)) and [Lat,Lon] != written_lonlat:
+                jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, ans)
                 info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, ans, Depth, Lat, Lon, Time, jpg)
                 tet.write(info)
                 written_lonlat = [Lat, Lon]
