@@ -120,7 +120,6 @@ def GPS(Location,gps_on):
             line = serialPort.readline()
             data = line.split(b',')
             data = [x.decode("UTF-8") for x in data]
-
             if data[0] == '$GPRMC':
                 if data[2] == "A":
                     lat = min2decimal(data[3])
@@ -142,11 +141,10 @@ def GPS(Location,gps_on):
                     gps.write('Lat,Lon\n')
                     gps.write('{},{}'.format(lat,lon))
 
-            if gps_on.value == False:
-                break
+
     except serial.SerialException:
         print ('Error opening GPS')
-        gps_on.value = False
+        gps_on.value = 3
     finally:
         serialPort.close()
         print('GPS finish')
@@ -178,10 +176,10 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
 
     # get sensor and set to high density
     depth_sensor = device.first_depth_sensor()
-    depth_sensor.set_option(rs.option.visual_preset, 4)
+    #depth_sensor.set_option(rs.option.visual_preset, 4)
     # dev_range = depth_sensor.get_option_range(rs.option.visual_preset)
-    preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
-    print (preset_name)
+    #preset_name = depth_sensor.get_option_value_description(rs.option.visual_preset, 4)
+    #print (preset_name)
     # set frame queue size to max
     sensor = profile.get_device().query_sensors()
     for x in sensor:
@@ -373,12 +371,14 @@ def main():
         elif gps_on.value == 3:
             pause_exit()
             break
-        parent_conn, child_conn = Pipe()
-        bag = bag_num()
-        img_process = Process(target=Show_Image,
-                              args=(bag,parent_conn, take_pic, Frame_num, camera_on, camera_repeat, gps_on, Location,))
-        img_process.start()
-        Camera(child_conn,take_pic,Frame_num,camera_on,bag)
+
+        else:
+            parent_conn, child_conn = Pipe()
+            bag = bag_num()
+            img_process = Process(target=Show_Image,
+                                  args=(bag,parent_conn, take_pic, Frame_num, camera_on, camera_repeat, gps_on, Location,))
+            img_process.start()
+            Camera(child_conn,take_pic,Frame_num,camera_on,bag)
 
     gps_process.terminate()
 
