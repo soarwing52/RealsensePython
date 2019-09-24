@@ -90,6 +90,7 @@ def color_to_png(file_name):
                 cv2.namedWindow("Color Stream", cv2.WINDOW_AUTOSIZE)
                 cv2.imshow("Color Stream",color_cvt)
                 cv2.imwrite('{}/{}_c_{}.png'.format(png_dir,filenum,var),color_cvt)
+                print '{}/{}_c_{}.png'.format(png_dir,filenum,var)
                 key = cv2.waitKey(1)
                 # if pressed escape exit program
                 if key == 27:

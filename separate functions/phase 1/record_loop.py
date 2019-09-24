@@ -45,11 +45,11 @@ def record():
             depth_colormap_resize = cv2.resize(depth_image,(424,240))
             color_image = np.asanyarray(color_frame.get_data())
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
-            color_cvt_2 = cv2.resize(color_cvt, (320,240))
-            images = np.hstack((color_cvt_2, depth_colormap_resize))
+            color_cvt_2 = cv2.resize(color_cvt, (424,318))
+            images = np.vstack((color_cvt_2, depth_colormap_resize))
             cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
             cv2.imshow('Color', images)
-
+            var = rs.frame.get_frame_number(color_frame)
             key = cv2.waitKey(1)
 
             time_2 = time.time()

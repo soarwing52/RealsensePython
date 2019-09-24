@@ -124,11 +124,13 @@ def GPS(Location,gps_on):
                 if data[2] == "A":
                     lat = min2decimal(data[3])
                     lon = min2decimal(data[5])
-
             elif data[0] == '$GPGGA':
                 if data[6] == '1':
                     lon = min2decimal(data[4])
                     lat = min2decimal(data[2])
+            else:
+                if gps_on.value == 0:
+                    print('GPS signal not good')
 
             if lon ==0 or lat == 0:
                 time.sleep(1)
@@ -255,14 +257,14 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
             color_image,depth_image = parent_conn.recv()
             depth_colormap_resize = cv2.resize(depth_image, (424, 240))
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
-            color_cvt_2 = cv2.resize(color_cvt, (320, 240))
-            images = np.hstack((color_cvt_2, depth_colormap_resize))
+            color_cvt_2 = cv2.resize(color_cvt, (424, 318))
+            images = np.vstack((color_cvt_2, depth_colormap_resize))
             cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
 
             if Pause is True:
-                cv2.rectangle(images, (420, 40), (220, 160), (0, 0, 255), -1)
+                cv2.rectangle(images, (111,219), (339,311), (0, 0, 255), -1)
                 font = cv2.FONT_HERSHEY_SIMPLEX
-                bottomLeftCornerOfText = (220, 110)
+                bottomLeftCornerOfText = (125,290)
                 fontScale = 2
                 fontColor = (0, 0, 0)
                 lineType = 4
@@ -292,7 +294,6 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
                     record.write(logmsg)
                 foto_location = (lon, lat)
                 i += 1
-
             if key & 0xFF == ord('q') or key == 27:
                 camera_on.value = False
                 gps_on.value = False
@@ -314,7 +315,6 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
     except EOFError:
         pass
     finally:
-        logfile.close()
         print ('Image thread ended')
 
 
@@ -337,9 +337,9 @@ def bag_num():
             else:
                 print ('current filename:{}'.format(file_name))
                 break
-
-    finally:
         return file_name
+    finally:
+        pass
 
 
 
@@ -365,7 +365,7 @@ def main():
     print('Program Start')
     while camera_repeat.value:
         if gps_on.value == 0:
-            print('waiting for gps to get ready')
+            #print('waiting for gps to get ready')
             time.sleep(1)
             continue
         elif gps_on.value == 3:

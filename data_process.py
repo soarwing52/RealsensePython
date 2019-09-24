@@ -134,7 +134,7 @@ def pair(num,tet,ans):
         Time = lines_l[8]
 
 
-        for i in range(-2,2):
+        for i in range(-5,5):
             ans = int(color_l) + i
             if os.path.isfile('{}/jpg/{}-{}.jpg'.format(project_dir,num,ans)) and [Lat,Lon] != written_lonlat:
                 jpg = '{}/jpg/{}-{}.jpg'.format(project_dir, num, ans)
@@ -147,7 +147,6 @@ def pair(num,tet,ans):
 def pair_list(ans):
     """Tkinter Button, loop through files in fotolog and create paired matcher.txt in shp folder"""
     project_dir = ans
-
     foto_log = project_dir + '/foto_log'
     shp_dir = dir_generate(project_dir + '/shp')
 
@@ -190,8 +189,6 @@ def color_to_jpg(input_file):
     device = profile.get_device()
     playback = device.as_playback()
     playback.set_real_time(False)
-    align_to = rs.stream.color
-    align = rs.align(align_to)
     try:
         while True:
             frames = pipeline.wait_for_frames()
@@ -207,9 +204,9 @@ def color_to_jpg(input_file):
                 pass
             else:
                 print 'compressing {}'.format(jpg_name)
-                kernel = np.array([[-1, -1, -1],
-                                   [-1, 9, -1],
-                                   [-1, -1, -1]])
+                kernel = np.array([[0, -1, 0],
+                                   [-1, 5, -1],
+                                   [0, -1, 0]])
                 sharpened = cv2.filter2D(color_cvt, -1,kernel)  # applying the sharpening kernel to the input image & displaying it.
                 cv2.imwrite((jpg_name), sharpened, [cv2.IMWRITE_JPEG_QUALITY,100])
 

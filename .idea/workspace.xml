@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/arcgis_integration/class_measure.py" line="247" />
+    <bookmark url="file://$PROJECT_DIR$/arcgis_integration/class_measure.py" line="242" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a9e4476-82b6-45dd-9743-54045d422778" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/separate functions/single_frameset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/Measure.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/all.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/all.txt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/class_measure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/command.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/command.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/schema.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/video.hlk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/arcgis integration/widgets2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/Measure.hlk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/Video.hlk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/all.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/all.txt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/class_measure.py" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis_integration/class_measure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/command.hlk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/command.py" beforeDir="false" afterPath="$PROJECT_DIR$/arcgis_integration/command.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/schema.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/arcgis_integration/widgets2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data_capture_qgis.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_capture_qgis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/bag/0620_001.bag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/bag/0620_002.bag" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/foto_log/0620_001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/foto_log/0620_002.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kml/Foto.kml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/kml/live.kml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/foto_location.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/location.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/separate functions/phase 1/color_to_png.py" beforeDir="false" afterPath="$PROJECT_DIR$/separate functions/phase 1/color_to_png.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/separate functions/phase 1/record_loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/separate functions/phase 1/record_loop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tt.py" beforeDir="false" afterPath="$PROJECT_DIR$/separate functions/background_remove.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,32 +42,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/arcgis_integration/class_measure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-870">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="259">
+              <caret line="196" column="19" lean-forward="true" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tt.py">
+        <entry file="file://$PROJECT_DIR$/data_process.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="500">
+              <caret line="214" column="31" lean-forward="true" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
               <folding>
-                <element signature="e#23#48#0" expanded="true" />
+                <element signature="e#24#45#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrat.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -80,6 +82,7 @@
       <find>count_search</find>
       <find>print</find>
       <find>GPs fi</find>
+      <find>hole</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,7 +109,6 @@
         <option value="Z:/Vorlagen/Toolboxes/data.py" />
         <option value="$PROJECT_DIR$/scratch.py" />
         <option value="$PROJECT_DIR$/arcgis integration/ss.py" />
-        <option value="$PROJECT_DIR$/data_process.py" />
         <option value="X:/Mittelweser/0513/abc.py" />
         <option value="X:/Mittelweser/0517/ddd.py" />
         <option value="X:/Mittelweser/0517/ccc.py" />
@@ -118,21 +120,27 @@
         <option value="$PROJECT_DIR$/arcgis integration/command.py" />
         <option value="$PROJECT_DIR$/separate functions/measure_new.py" />
         <option value="$PROJECT_DIR$/arcgis integration/class_measure.py" />
-        <option value="$PROJECT_DIR$/data_capture_qgis.py" />
         <option value="$PROJECT_DIR$/../email_notice/outlook_reply - Copy.py" />
         <option value="$PROJECT_DIR$/separate functions/cvcanvas.py" />
         <option value="$PROJECT_DIR$/tt.py" />
         <option value="Z:/Vorlagen/Toolboxes/Project_creator/proj_creator (2).py" />
-        <option value="$PROJECT_DIR$/scrat.py" />
+        <option value="$PROJECT_DIR$/separate functions/phase 1/record_loop.py" />
+        <option value="$PROJECT_DIR$/data_capture_qgis.py" />
+        <option value="$PROJECT_DIR$/separate functions/single_frameset.py" />
+        <option value="$PROJECT_DIR$/arcgis_integration/command.py" />
+        <option value="$PROJECT_DIR$/separate functions/phase 1/color_to_png.py" />
+        <option value="$PROJECT_DIR$/arcgis_integration/class_measure2.py" />
         <option value="$PROJECT_DIR$/arcgis_integration/class_measure.py" />
+        <option value="$PROJECT_DIR$/scrat.py" />
+        <option value="$PROJECT_DIR$/data_process.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="253" />
-    <option name="y" value="64" />
+    <option name="x" value="380" />
+    <option name="y" value="115" />
     <option name="width" value="1238" />
-    <option name="height" value="665" />
+    <option name="height" value="666" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -164,10 +172,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython\separate functions\phase 1" />
       <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython\separate functions" />
+      <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython\separate functions\phase 1" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython\arcgis_integration" />
       <recent name="C:\Users\cyh\Documents\GitHub\RealsensePython" />
     </key>
   </component>
@@ -183,7 +192,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.class_measure (1)">
+  <component name="RunManager" selected="Python.class_measure">
     <configuration name="RealsensePython" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,7 +210,7 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
-    <configuration name="class_measure (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="class_measure" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,7 +231,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="cvcanvas" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="class_measure2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -230,11 +239,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/separate functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/arcgis_integration" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/separate functions/cvcanvas.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/arcgis_integration/class_measure2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -243,7 +252,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="proj_creator (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="color_to_png" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RealsensePython" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -251,11 +260,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="Z:/Vorlagen/Toolboxes/Project_creator" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/separate functions/phase 1" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="Z:/Vorlagen/Toolboxes/Project_creator/proj_creator (2).py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/separate functions/phase 1/color_to_png.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="data_process" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RealsensePython" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_process.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,34 +315,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tt" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RealsensePython" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tt.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.class_measure (1)" />
+        <item itemvalue="Python.class_measure" />
+        <item itemvalue="Python.data_process" />
         <item itemvalue="Python.scrat" />
-        <item itemvalue="Python.proj_creator (2)" />
-        <item itemvalue="Python.tt" />
-        <item itemvalue="Python.cvcanvas" />
+        <item itemvalue="Python.class_measure2" />
+        <item itemvalue="Python.color_to_png" />
       </list>
     </recent_temporary>
   </component>
@@ -383,8 +392,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15595363" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4993007" visible="true" weight="0.15595363" />
+      <window_info id="Structure" order="1" sideWeight="0.5006993" side_tool="true" weight="0.15595363" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
@@ -420,11 +429,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/excel.py" />
-    <entry file="file://$PROJECT_DIR$/opencv_key.py" />
-    <entry file="file://$PROJECT_DIR$/jpgcreator.py" />
-    <entry file="file://$USER_HOME$/Desktop/blur_image.py" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
     <entry file="file://$USER_HOME$/Downloads/librealsense-master/wrappers/python/python.cpp" />
     <entry file="file://Z:/Vorlagen/Real Sense/in use/class_measure.py" />
     <entry file="file://$PROJECT_DIR$/arcgis integration/scratch.py" />
@@ -448,58 +452,18 @@
     <entry file="file://X:/Mittelweser/0520/ccc.py" />
     <entry file="file://X:/Mittelweser/0520/abc.py" />
     <entry file="file://X:/Mittelweser/0520/aa.py" />
-    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/read_bag.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="20" selection-start-line="20" selection-end-line="22" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/separate functions/phase 1/measure_loop_temp_0405.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1860" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/arcgis integration/widgets2.py" />
-    <entry file="file://$PROJECT_DIR$/separate functions/opencv_find_key.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/arcgis integration/command.py" />
     <entry file="file://$PROJECT_DIR$/arcgis integration/class_measure.py" />
     <entry file="file://$PROJECT_DIR$/../email_notice/outlook_reply - Copy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="28" column="49" lean-forward="true" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_capture_qgis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1640">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2120">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -527,11 +491,6 @@
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/to_frame_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/separate functions/phase 1/save-translate.py">
@@ -582,33 +541,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/read_bag.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/record_loop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/opencv_find_key.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/single_frameset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/arcgis_integration/command.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_capture_qgis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="168" column="12" selection-start-line="167" selection-end-line="172" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/color_to_png.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="91" column="81" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/separate functions/phase 1/matchframelist.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tt.py">
+    <entry file="file://$PROJECT_DIR$/separate functions/phase 1/to_frame_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="-370" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/separate functions/background_remove.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
           <folding>
             <element signature="e#23#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/arcgis_integration/class_measure2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1960">
+          <caret line="103" column="15" selection-end-line="251" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scrat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="8" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="214" column="31" lean-forward="true" selection-start-line="214" selection-start-column="31" selection-end-line="214" selection-end-column="31" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/arcgis_integration/class_measure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-870">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="259">
+          <caret line="196" column="19" lean-forward="true" selection-start-line="196" selection-start-column="19" selection-end-line="196" selection-end-column="19" />
         </state>
       </provider>
     </entry>
