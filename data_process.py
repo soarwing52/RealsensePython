@@ -176,20 +176,20 @@ def matchershp():
 
 def color_to_jpg(input_file):
     """create jpg with the input file in the folder jpg"""
-    print input_file
-    bagname = os.path.basename(input_file)
-    bagdir = os.path.dirname(input_file)
-    projectdir = os.path.dirname(bagdir)
-
-    pipeline = rs.pipeline()
-    config = rs.config()
-    config.enable_all_streams()
-    config.enable_device_from_file(input_file, False)
-    profile = pipeline.start(config)
-    device = profile.get_device()
-    playback = device.as_playback()
-    playback.set_real_time(False)
     try:
+        print input_file
+        bagname = os.path.basename(input_file)
+        bagdir = os.path.dirname(input_file)
+        projectdir = os.path.dirname(bagdir)
+
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_all_streams()
+        config.enable_device_from_file(input_file, False)
+        profile = pipeline.start(config)
+        device = profile.get_device()
+        playback = device.as_playback()
+        playback.set_real_time(False)
         while True:
             frames = pipeline.wait_for_frames()
             color_frame = frames.get_color_frame()

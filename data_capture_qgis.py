@@ -114,7 +114,6 @@ def GPS(Location,gps_on):
     serialPort.open()
     print ('GPS opened successfully')
     lon, lat = 0, 0
-
     try:
         while True:
             line = serialPort.readline()
@@ -128,9 +127,7 @@ def GPS(Location,gps_on):
                 if data[6] == '1':
                     lon = min2decimal(data[4])
                     lat = min2decimal(data[2])
-            else:
-                if gps_on.value == 0:
-                    print('GPS signal not good')
+
 
             if lon ==0 or lat == 0:
                 time.sleep(1)
@@ -195,8 +192,6 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
             frames = pipeline.wait_for_frames()
             depth_frame = frames.get_depth_frame()
             color_frame = frames.get_color_frame()
-            var = rs.frame.get_frame_number(color_frame)
-            vard = rs.frame.get_frame_number(depth_frame)
             depth_color_frame = rs.colorizer().colorize(depth_frame)
             depth_image = np.asanyarray(depth_color_frame.get_data())
             color_image = np.asanyarray(color_frame.get_data())
@@ -213,7 +208,6 @@ def Camera(child_conn, take_pic, Frame_num, camera_on, bag):
                 time.sleep(0.05)
                 recorder.pause()
                 take_pic.value = False
-
 
             elif camera_on.value == 0:
                 child_conn.close()
@@ -245,7 +239,6 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
     foto_location = (0, 0)
     foto_frame = Frame_num[0]
 
-
     try:
         while True:
             (lon, lat) = Location[:]
@@ -254,12 +247,14 @@ def Show_Image(bag, parent_conn, take_pic, Frame_num, camera_on, camera_repeat, 
             date = '{},{},{},{}'.format(present.day, present.month, present.year, present.time())
             local_take_pic = False
 
-            color_image,depth_image = parent_conn.recv()
+            color_image, depth_image = parent_conn.recv()
             depth_colormap_resize = cv2.resize(depth_image, (424, 240))
             color_cvt = cv2.cvtColor(color_image, cv2.COLOR_RGB2BGR)
             color_cvt_2 = cv2.resize(color_cvt, (424, 318))
             images = np.vstack((color_cvt_2, depth_colormap_resize))
             cv2.namedWindow('Color', cv2.WINDOW_AUTOSIZE)
+            cv2.setWindowProperty('Color', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+            cv2.setWindowProperty('Color', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_NORMAL)
 
             if Pause is True:
                 cv2.rectangle(images, (111,219), (339,311), (0, 0, 255), -1)
@@ -342,9 +337,7 @@ def bag_num():
         pass
 
 
-
 def main():
-
     # Create Folders for Data
     folder_list = ('bag','foto_log')
     for folder in folder_list:
@@ -365,7 +358,6 @@ def main():
     print('Program Start')
     while camera_repeat.value:
         if gps_on.value == 0:
-            #print('waiting for gps to get ready')
             time.sleep(1)
             continue
         elif gps_on.value == 3:
