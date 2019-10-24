@@ -1,5 +1,7 @@
 # PyRealsense for d435
 
+ready-to-use exe version can be seen at https://github.com/soarwing52/Realsense_exe
+
 in this project will have record bag and measure picture from bag with the RealsenseD435 camera. The scripts are separated into two parts, collector and processor.
 
 the collector is to let the driver collect data effortlessly, with one remote controller.
