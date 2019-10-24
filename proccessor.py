@@ -13,10 +13,10 @@ import threading
 import os
 import piexif
 from fractions import Fraction
+from queue import Queue
 
 
 RUNNING = False
-
 
 
 def set_gps_location(file_name, lat, lng, altitude):
@@ -73,9 +73,10 @@ def change_to_rational(number):
     return: tuple like (1, 2), (numerator, denominator)
     """
     f = Fraction(str(number))
-    return (f.numerator, f.denominator)
+    return f.numerator, f.denominator
 
-def generate_jpg(project_dir):
+
+def generate_jpg(project_dir, q):
     """Loop through all the bag files until all jpgs were created
     if theres unreadable bag file it will keep on looping"""
     bag_dir = project_dir + '/bag'
@@ -85,7 +86,13 @@ def generate_jpg(project_dir):
         for i in range(2):
             x = [os.path.join(bag_dir, bag) for bag in os.listdir(bag_dir)]
             pool = mp.Pool()
-            pool.map(color_to_jpg, x)
+            count = 0
+            for result in pool.imap_unordered(color_to_jpg, x):
+                count += 1
+                q.put(count * 100 / len(x))
+
+
+            #pool.map(color_to_jpg, x)
 
     finally:
         print('jpg fertig')
@@ -137,7 +144,6 @@ def color_to_jpg(input_file):
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    ppy = pyqtSignal()
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent=parent)
         self.setupUi(self)
@@ -247,7 +253,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def message_reciever(self, msg):
         if 'Error' in msg or 'fertig' in msg:
             self.textBrowser.append(msg)
-
         self.statusbar.showMessage(msg)
 
 class JPGThread(QThread):
@@ -257,14 +262,12 @@ class JPGThread(QThread):
         super(JPGThread, self).__init__(parent)
 
     def run(self):
-        t1 = threading.Thread(target=generate_jpg, args=(self.prj_dir,))
+        q = Queue()
+        t1 = threading.Thread(target=generate_jpg, args=(self.prj_dir,q))
         t1.start()
-        x = 0
         while RUNNING:
+            x = q.get()
             self.update_progressbar.emit(x)
-            time.sleep(5)
-            if x < 99:
-                x += 1
         self.update_progressbar.emit(100)
         self.msg.emit('JPG fertig')
 
