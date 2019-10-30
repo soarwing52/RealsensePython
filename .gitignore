@@ -1,0 +1,4 @@
+*.pyc
+location.csv
+foto_location.csv
+.idea
