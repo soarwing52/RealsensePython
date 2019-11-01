@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-from Tkinter import *
-import tkFileDialog
-import arcpy
-from arcpy import management
-import pyrealsense2 as rs
+from tkinter import *
+from tkinter import filedialog
 import numpy as np
 import cv2
 import multiprocessing as mp
@@ -74,7 +71,7 @@ def geotag():
     :return:
     """
     global project_dir,t
-    print 'start geotag'
+    print('start geotag')
     fotolog = project_dir + '/shp/matcher.txt'
     jpg_dir = project_dir + '/jpg'
     with open(fotolog, 'r') as log:
@@ -86,11 +83,11 @@ def geotag():
             try:
                 set_gps_location(jpgname, Lat, Lon, 0)
             except IOError:
-                print jpgname + ' not found'
+                print(jpgname + ' not found')
                 continue
             finally:
                 pass
-    print 'tagged'
+    print('tagged')
     t.insert(END, 'geotagging fertig\n')
 
 
@@ -101,7 +98,7 @@ def dir_generate(in_dir):
         try:
             os.makedirs(in_dir, 0o700)
         except WindowsError:
-            print 'already exist'
+            print('already exist')
         finally:
             pass
     return in_dir
@@ -110,9 +107,9 @@ def dir_generate(in_dir):
 def get_dir(var):
     """ Tkinter button to get the project directory"""
     global project_dir
-    project_dir = tkFileDialog.askdirectory()
+    project_dir = filedialog.askdirectory()
     var.set(project_dir)
-    print project_dir
+    print(project_dir)
     return project_dir
 
 
@@ -141,7 +138,7 @@ def pair(num,tet,ans):
                 info = '{},{},{},{},{},{},{},{}\n'.format(num, ID, ans, Depth, Lat, Lon, Time, jpg)
                 tet.write(info)
                 written_lonlat = [Lat, Lon]
-    print num + ' done'
+    print(num + ' done')
 
 
 def pair_list(ans):
@@ -157,27 +154,15 @@ def pair_list(ans):
             try:
                 pair(num,txt,ans)
             except IOError:
-                print 'no file {}'.format(num)
+                print('no file {}'.format(num))
             finally:
-                print 'pair list done'
-
-
-def matchershp():
-    """create the shp from the matcher.txt"""
-    global project_dir,t
-    shp_dir = dir_generate(project_dir + '/shp')
-    arcpy.env.overwriteOutput = True
-    spRef = 'WGS 1984'
-    management.MakeXYEventLayer(shp_dir + '/matcher.txt', 'Lon', 'Lat', 'Fotopunkte', spRef)
-    arcpy.FeatureClassToShapefile_conversion('Fotopunkte', shp_dir)
-    t.insert(END, 'Fotopunkte.shp fertig\n')
-
-
+                print('pair list done')
 
 def color_to_jpg(input_file):
     """create jpg with the input file in the folder jpg"""
+    import pyrealsense2 as rs
     try:
-        print input_file
+        print(input_file)
         bagname = os.path.basename(input_file)
         bagdir = os.path.dirname(input_file)
         projectdir = os.path.dirname(bagdir)
@@ -203,19 +188,18 @@ def color_to_jpg(input_file):
                 # print 'jpg exist'
                 pass
             else:
-                print 'compressing {}'.format(jpg_name)
+                print('compressing {}'.format(jpg_name))
                 kernel = np.array([[0, -1, 0],
                                    [-1, 5, -1],
                                    [0, -1, 0]])
                 sharpened = cv2.filter2D(color_cvt, -1,kernel)  # applying the sharpening kernel to the input image & displaying it.
                 cv2.imwrite((jpg_name), sharpened, [cv2.IMWRITE_JPEG_QUALITY,100])
-
     except RuntimeError:
-        
-        cv2.destroyAllWindows()
+        pass
     finally:
-        print 'frame covert finished for ' + input_file
+        print('frame covert finished for ' + input_file)
         pipeline.stop()
+
 
 
 def generate_jpg():
@@ -232,7 +216,7 @@ def generate_jpg():
             pool.map(color_to_jpg, x)
 
     finally:
-        print 'jpg fertig'
+        print('jpg fertig')
         t.insert(END, 'JPG fertig\n')
 
 
