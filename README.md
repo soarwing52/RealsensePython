@@ -58,6 +58,7 @@ it will put the recorded bag in bag format,
 information of index,color frame number, depth frame number, longtitude, lattitude, day, month, year, timewill be saved in txt format in foto_log
 
 QtCam:
+
 ![qtcam](https://1.bp.blogspot.com/-4gsC0uT-b4o/XbwRcqa1I5I/AAAAAAABAgw/DfpxRpPVBPQQbllyI8gTpV_EIy2GAsAegCLcBGAsYHQ/s400/pyqtcam.JPG)
 
 
@@ -127,7 +128,10 @@ in here we use subprocess because the current realsense library will freeze afte
 and ArcMap don't support multithread nor multicore
 therefore we can't use the simple import but have to call out command line and then run python
 
-The running image will be like this>
+The running image will be like this:
+
+use spacebar to switch between modes, video mode can browse through the frames faster
+left click and hold to measure, right click to erase all
 ![videomode](https://github.com/soarwing52/Realsense_exe/blob/master/img/video%20mode.JPG)
 ![measure_mode](https://github.com/soarwing52/Realsense_exe/raw/master/img/measure%20mode.JPG)
 
