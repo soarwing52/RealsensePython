@@ -20,6 +20,11 @@ the script is mainly based on Realsense, using ROSbag and txt files to record gp
 ### Prerequisites
 
 Hardware: GPS reciever (BU353S4 in my case)
+![gps](http://village.photos/images/user/2222e0fa-3e6d-47fa-8ee0-19f1dc512885/ddbe9b26-bc4b-48e7-b669-8f25ad00a494.jpg)
+
+RS camera
+![RS](https://simplecore.intel.com/realsensehub/wp-content/uploads/sites/63/Compare.png)
+
 
 Python packages
 ```
