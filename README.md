@@ -26,13 +26,7 @@ RS camera
 ![RS](https://simplecore.intel.com/realsensehub/wp-content/uploads/sites/63/Compare.png)
 
 
-Python packages
-```
-pip install --upgrade pip
-pip install --user pyrealsense2 
-pip install --user opencv-python (especially in user, else it will overwrite arcgis python package)
-argparse, py-getch, pyserial, fractions,
-```
+
 ### Data Preparation
 
 data collector: will generate folders: bag, log, and csvs :live location. foto_location
@@ -44,10 +38,14 @@ data processor: from the collected bag and log file, create jpg and matched.txt
 
 A step by step series of examples that tell you how to get a development env running
 
-After installed, copy widgets2 into Lib/matplotlib
-and copy def_measure to C:\Users\yourusername\AppData\Roaming\Python\Python27\site-packages
-
-(I edit the Ruler widget to measure, therefore this step is neccasary)
+will generate requirment.txt in the future
+Python packages
+```
+pip install --upgrade pip
+pip install --user pyrealsense2 
+pip install --user opencv-python (especially in user, else it will overwrite arcgis python package)
+argparse, py-getch, pyserial, fractions,
+```
 
 ### Data Capture
 
